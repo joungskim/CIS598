@@ -7,9 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Ingrediant</h4>
+    <h4>Ingredient</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -51,11 +57,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User.Email)
+            @Html.DisplayName("Submitted By")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.Email)
+            @Html.DisplayFor(model => model.User.User1)
         </dd>
 
     </dl>

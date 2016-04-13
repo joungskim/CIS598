@@ -6,13 +6,17 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using CIS598PROJECT.Models;
 
 namespace CIS598PROJECT.Models
 {
     public class IngredientsController : Controller
     {
         private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
-
+        //private string identity = 
         // GET: Ingredients
         public ActionResult Index()
         {

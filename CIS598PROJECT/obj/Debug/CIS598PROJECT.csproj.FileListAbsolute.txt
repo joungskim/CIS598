@@ -56,3 +56,14 @@ C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.InitialCreate.resources
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.csproj.GenerateResource.Cache
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.Initial.resources
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\Swashbuckle.Core.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Net.Http.Formatting.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Web.Http.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Web.Http.WebHost.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\WebActivatorEx.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Net.Http.Formatting.xml
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Web.Http.xml
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\bin\System.Web.Http.WebHost.xml

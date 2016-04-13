@@ -31,5 +31,7 @@ namespace CIS598PROJECT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IngrediantRecipe> IngrediantRecipes { get; set; }
         public virtual User User { get; set; }
+
+        public List<string> TypeList = new List<string> { "Liqour", "Mixer", "Beer", "Wine", "liqueur", "Champagne" }; 
     }
 }
