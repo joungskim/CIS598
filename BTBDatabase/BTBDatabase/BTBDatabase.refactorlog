@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a0793c49-b381-434b-850a-63edfc1786d7" ChangeDateTime="04/13/2016 03:40:07">
+    <Property Name="ElementName" Value="[dbo].[Ingrediants].[Submitted By]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Ingrediants]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubmittedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bd4cfa24-a167-4158-b70e-7a7ee8729e63" ChangeDateTime="04/13/2016 03:40:51">
+    <Property Name="ElementName" Value="[dbo].[MessageBoard].[Submitted By]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MessageBoard]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubmittedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="72038da9-77b2-4e38-a30e-c09fb873cff9" ChangeDateTime="04/13/2016 03:46:04">
+    <Property Name="ElementName" Value="[dbo].[Replies].[Submitted By]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Replies]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubmittedBy" />
+  </Operation>
+</Operations>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aacfe234bd904910a92c757e0b5e27f0" Name="Diagram1">
+        <EntityTypeShape EntityType="BTBDatabase_1Model.C__RefactorLog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.DrinkShot" Width="1.5" PointX="3.125" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.IngrediantRecipe" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Ingrediant" Width="1.5" PointX="4" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.MessageBoard" Width="1.5" PointX="9.875" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Message" Width="1.5" PointX="9" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Reply" Width="1.5" PointX="7.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.User" Width="1.5" PointX="6.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.UserRating" Width="1.5" PointX="5.5" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_DrinkShot_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_IngrediantRecipe_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_UserRating_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_IngrediantRecipe_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_Ingrediants_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_MessageBoard_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_Replies_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_Messages_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_Messages_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_Replies_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="BTBDatabase_1Model.FK_UserRating_ToTable_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
