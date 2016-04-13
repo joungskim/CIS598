@@ -53,3 +53,6 @@ C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.csprojResolveAssemblyReference.cache
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.dll
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.pdb
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.InitialCreate.resources
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.csproj.GenerateResource.Cache
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CGProject\CIS598PROJECT\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.Initial.resources

@@ -60,8 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="DrinkShot.sql" />
-    <Build Include="IngrediantRecipe.sql" />
-    <Build Include="Ingrediants.sql" />
+    <Build Include="IngredientRecipe.sql" />
+    <Build Include="Ingredients.sql" />
     <Build Include="MessageBoard.sql" />
     <Build Include="Messages.sql" />
     <Build Include="Replies.sql" />

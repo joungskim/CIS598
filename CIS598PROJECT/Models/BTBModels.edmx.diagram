@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aacfe234bd904910a92c757e0b5e27f0" Name="Diagram1">
+      <Diagram DiagramId="54631bb566a940c5a26b71788f977aba" Name="Diagram1">
         <EntityTypeShape EntityType="BTBDatabase_1Model.C__RefactorLog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.DrinkShot" Width="1.5" PointX="3.125" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.IngrediantRecipe" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.Ingrediant" Width="1.5" PointX="4" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.MessageBoard" Width="1.5" PointX="9.875" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.Message" Width="1.5" PointX="9" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.Reply" Width="1.5" PointX="7.875" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.User" Width="1.5" PointX="6.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTBDatabase_1Model.UserRating" Width="1.5" PointX="5.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.DrinkShot" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.IngrediantRecipe" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Ingrediant" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.MessageBoard" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Message" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.Reply" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.User" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTBDatabase_1Model.UserRating" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
         <AssociationConnector Association="BTBDatabase_1Model.FK_DrinkShot_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="BTBDatabase_1Model.FK_IngrediantRecipe_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="BTBDatabase_1Model.FK_UserRating_ToTable" ManuallyRouted="false" />

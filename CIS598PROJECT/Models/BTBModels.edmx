@@ -555,7 +555,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BTBDatabase_1Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BTBDatabase_1Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="DrinkShots" EntityType="Self.DrinkShot" />
           <EntitySet Name="IngrediantRecipes" EntityType="Self.IngrediantRecipe" />
@@ -615,7 +615,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BTBDatabase_1ModelStoreContainer" CdmEntityContainer="BTBDatabase_1Entities1">
+        <EntityContainerMapping StorageEntityContainer="BTBDatabase_1ModelStoreContainer" CdmEntityContainer="BTBDatabase_1Entities2">
           <EntitySetMapping Name="C__RefactorLog">
             <EntityTypeMapping TypeName="BTBDatabase_1Model.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">

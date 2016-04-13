@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
   <Operation Name="Rename Refactor" Key="a0793c49-b381-434b-850a-63edfc1786d7" ChangeDateTime="04/13/2016 03:40:07">
-    <Property Name="ElementName" Value="[dbo].[Ingrediants].[Submitted By]" />
+    <Property Name="ElementName" Value="[dbo].[Ingredients].[Submitted By]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[Ingrediants]" />
+    <Property Name="ParentElementName" Value="[dbo].[Ingredients]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="SubmittedBy" />
   </Operation>
