@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Candal', sans-serif; font-weight: 500;
+    letter-spacing:1px;
+    text-shadow:2px 2px 2px #000000;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,7 +34,7 @@ li {
 }
 a.panel{
     
-    font-family: 'Candal', sans-serif; font-weight: 700;
+    font-family: 'Candal', sans-serif; font-weight: 500;
 
 }
  .apple{
@@ -78,6 +81,7 @@ a.panel{
     background-color:transparent;
     color:white;
    
+   font-family: 'Candal', sans-serif; font-weight: 600;
 
 }
 .carousel{
