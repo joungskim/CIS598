@@ -40,19 +40,26 @@ namespace CIS598PROJECT.Models
         }
 
         // GET: Ingredients/Create
+
         public ActionResult Create()
         {
-            ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
             return View();
         }
 
         // POST: Ingredients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("Create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,Description,Image,SubmittedBy,CostLiter,Date,Type")] Ingrediant ingrediant)
         {
+            ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            BTBDatabase_1Entities2 service = new BTBDatabase_1Entities2();
+            db = new BTBDatabase_1Entities2();
+            ingrediant.Image = new Controllers.ConversionController().ConvertToBytes(file);
+            
             if (ModelState.IsValid)
             {
                 db.Ingrediants.Add(ingrediant);
