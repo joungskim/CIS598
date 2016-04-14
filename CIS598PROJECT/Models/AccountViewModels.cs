@@ -68,6 +68,7 @@ namespace CIS598PROJECT.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -79,6 +80,22 @@ namespace CIS598PROJECT.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string Bio { get; set; }
+
+        [Required]
+        [Display(Name = "Age")]
+        [Range (21, 200, ErrorMessage= "Must be 21 years or older!")]
+        public int Age { get; set; }
+
+        public string Sex { get; set; }
+        public string State { get; set; }
+
+        [Required]
+        [Display(Name = "User Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        public string UserName { get; set; }
+        
     }
 
     public class ResetPasswordViewModel

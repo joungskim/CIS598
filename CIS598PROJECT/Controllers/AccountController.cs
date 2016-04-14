@@ -17,6 +17,7 @@ namespace CIS598PROJECT.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
 
         public AccountController()
         {
@@ -151,12 +152,24 @@ namespace CIS598PROJECT.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    User BTUser = new User
+                    {
+                        User1 = model.UserName,
+                        Email = model.Email,
+                        State = "KS",
+                        Date = DateTime.Now,
+                        Age = model.Age,
+                        Bio = model.Bio,
+
+                    };
+                    db.Users.Add(BTUser);
+                    db.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

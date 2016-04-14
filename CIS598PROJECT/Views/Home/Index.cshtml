@@ -1,8 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+    
 }
 
-<div class="container-fluid">
+    <div class="container-fluid, background">
+
     <div class="row">
         <div class="col-md-8 navbar-default">
             <nav class="navbar navbar-default" role="navigation">
@@ -10,13 +13,13 @@
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                    </button> <a class="navbar-brand" href="#">Search for a Drink or Shot</a>
+                    </button> <a style="color:white;" class="navbar-brand" href="#">Search for a Drink or Shot</a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div style="background-size: cover; background-image: url(http://a.abcnews.go.com/images/Health/gty_drinks_ll_1204113_wmain.jpg);" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
+                            <a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#">All Shots</a>
@@ -51,59 +54,91 @@
                             Search
                         </button>
                     </form>
-                </div>
+
+
 
             </nav>
             <div class="row col-md-12">
+                <div class="collapse navbar-collapse col-md-4" id="Recipe-1">
+                    <div class="panel panel-heading" style="width:200px">
+                        <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe">Instructions</a>
+                    </div>
+                    <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
+
+                        <ul>
+                            <li>
+                            <li>
+                                <label for="Leftt-column"><h2>Instructions:</h2></label>
+                                <p>Insert instructions</p><br /><br /><br /><br /><br />
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <li>
+                        <label style="margin-right:-25%;" for="Bottomleft-column"><h2>Rating:</h2></label>
+                        <p>Insert ratings</p>
+                    </li>
+                </div>
+
+                <!---->
                 <div class="collapse navbar-collapse col-sm-4" id="drink-name-1">
                     <div class="panel panel-heading" style="width:200px">
+
                         <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name">Washinton Apple</a>
+
                     </div>
                     <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px">
                         <ul>
-                            <li>
-                                Image
+
+                            <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
                             </li>
+
+
                         </ul>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse col-md-4" id="Recipe-1">
-                    <div class="panel panel-heading" style="width:200px">
-                        <a class="panel panel-title" data-toggle="collapse"  href="#panel-recipe">Recipe</a>
-                    </div>
-                    <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
-                            <ul>
-                                <li>
-                                    3 parts shot.  Pour ingrediants 1/3 of each ingrediant into shaker with ice.  Shake Well.
-                                </li>
-                            </ul>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse col-sm-4 sidebar-outer" id="Ingrediants-1">
                     <div class="panel panel-heading" style="width:200px">
                         <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingrediants">Ingredients</a>
                     </div>
-                    <div id="panel-Ingrediants" class="panel-collapse collapse in sidebar" style="max-width:200px">
-                        
+                    <div id="panel-Ingrediants" class="panel-collapse collapse in sidebar" style="max-width:350px">
+
                         <ul>
                             <li>
+                                <label for="Right-column"><h2>Ingredients:</h2></label>
+                                <p style="margin-left:30%;">Insert ingredients</p>
+                            </li>
+                            <li style="margin-left:30%;">
+
                                 Crown
                             </li>
-                            <li>
+                            <li style="margin-left:30%;">
                                 Peach
                             </li>
-                            <li>
+                            <li style="margin-left:30%;">
                                 Cranberry Juice
                             </li>
+                            <li style="margin-left:35%;">
+                                @Html.ActionLink("Full Ingredients List", "Index", "Ingredients")
+                            </li>
+
                         </ul>
+
                     </div>
+                    <li>
+                        <label style="margin-left:50%;" for="Bottomright-column"><h2>Comments:</h2></label>
+                        <p style="margin-left:50%;">Insert comments</p>
+                    </li>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-md-12">
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-12">
@@ -118,35 +153,35 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img alt="Carousel Images with Links" src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiHqKHN153LAhUMnIMKHUFwBh8QjRwIBw&url=https%3A%2F%2Fwww.healthtap.com%2Ftopics%2Fcan-you-drink-alcohol-while-taking-lexapro&psig=AFQjCNFQ3a2j-aHQ-uz90OBU8yIKmeMkJw&ust=1456859742648538" />
+                                <img alt="Carousel Images with Links" src="http://www.talktofrank.com/sites/default/files/drugs/LARGE%20PHOTOS_ALCOHOL.jpg" />
                                 <div class="carousel-caption">
                                     <h4>
                                         First Thumbnail label
                                     </h4>
                                     <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+
                                     </p>
                                 </div>
                             </div>
                             <div class="item">
-                                <img alt="Carousel Bootstrap Second" src="https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiHqKHN153LAhUMnIMKHUFwBh8QjRwIBw&url=https%3A%2F%2Fwww.healthtap.com%2Ftopics%2Fcan-you-drink-alcohol-while-taking-lexapro&psig=AFQjCNFQ3a2j-aHQ-uz90OBU8yIKmeMkJw&ust=1456859742648538" />
+                                <img alt="Carousel Bootstrap Second" src="http://www.talktofrank.com/sites/default/files/drugs/LARGE%20PHOTOS_ALCOHOL.jpg" />
                                 <div class="carousel-caption">
                                     <h4>
                                         Second Thumbnail label
                                     </h4>
                                     <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+
                                     </p>
                                 </div>
                             </div>
                             <div class="item">
-                                <img alt="Carousel Bootstrap Third" src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg" />
+                                <img alt="Carousel Bootstrap Third" src="http://www.talktofrank.com/sites/default/files/drugs/LARGE%20PHOTOS_ALCOHOL.jpg" />
                                 <div class="carousel-caption">
                                     <h4>
                                         Third Thumbnail label
                                     </h4>
                                     <p>
-                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+
                                     </p>
                                 </div>
                             </div>
@@ -234,14 +269,15 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-4">
             <h2>
                 Latest Comments
             </h2>
             <p>
-                Jerry - Check out my new rendition of Sex With an Aligator!    -LINK-
-            </p>
+                Jerry - Check out my new rendition of Sex With an Aligator!
+                <img style="width:150px;height:150px;" src="https://doodleordie.s3.amazonaws.com/i/5htt1bsm3/1__8GIT4MVQg.png">
             <p>
                 <a class="btn" href="#">Read More »</a>
             </p>
@@ -252,7 +288,7 @@
             </h2>
             <p>
                 Julie - Last night started like any other night...
-            </p>
+                <img style="width:150px;height:150px;" src="http://vignette3.wikia.nocookie.net/courage/images/a/a1/Scared_Courage.jpg/revision/latest?cb=20110610081904" />
             <p>
                 <a class="btn" href="#">Read More »</a>
             </p>
@@ -262,11 +298,15 @@
                 Bartender Do's and Dont's
             </h2>
             <p>
-                1. Always tip your bartender...    
+                1. Always tip your bartender...
+
             </p>
-            <p>
-                <a class="btn" href="#">Read More »</a>
+            <img style="width:200px;height:150px;" src="http://www.naturesafariindia.com/images/Do-and-dont.png">
+            <a class="btn" href="#">Read More »</a>
             </p>
+
         </div>
+
     </div>
+
 </div>

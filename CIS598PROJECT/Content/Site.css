@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Candal', sans-serif; font-weight: 500;
+    letter-spacing:1px;
+    text-shadow:2px 2px 2px #000000;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +24,70 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+li {
+
+    list-style-type: none;
+
+
+    color:white;
+}
+a.panel{
+    
+    font-family: 'Candal', sans-serif; font-weight: 500;
+
+}
+ .apple{
+     border-radius: 300px;
+    width:390px;
+    height:390px;
+    position:absolute;
+    
+    display:block;
+   
+    margin-left: -50%;
+    margin-right: auto;
+    
+    display: block;
+
+}
+ .left-column{
+     text-align:left;
+ }
+  .right-column{
+     text-align:right;
+ }
+   .bottomleft-column{
+     text-align:left;
+     margin-top:auto;
+ }
+    .bottomright-column{
+     text-align:right;
+     margin-top:auto;
+ }
+.background{
+   
+    z-index:2;
+    background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+        
+    url(http://afssolutions.com.au/wp-content/uploads/2015/05/AFS-Top-Wooden-Table-With-Bar-Blur-86946938.jpg);
+    background-size:contain;
+}
+.col-md-4,.col-md-8,.col-md-12,.panel-heading,.panel,.row,.button,.panel-title,.panel panel-default,.panel-default,.panel-group,.row,.panel-collapse, .panel-body,.carousel slide,.panel-title collapsed{
+    background-color:transparent;
+    color:white;
+   
+   font-family: 'Candal', sans-serif; font-weight: 600;
+
+}
+.carousel{
+    border:inset;
+    border-color:darkgoldenrod;
+}
+#panel-298950{
+    background-color:transparent;
 }
