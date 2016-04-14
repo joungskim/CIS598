@@ -130,6 +130,37 @@ namespace CIS598PROJECT.Models
             return RedirectToAction("Index");
         }
 
+        //Retrieve an image from a database
+        public ActionResult RetrieveImage(string name)
+        {
+            byte[] cover = GetImageFromDataBase(name);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public byte[] GetImageFromDataBase(string name)
+        {
+            byte[] cover = null;
+            var q = from temp in db.Ingrediants where temp.Name.Equals(name) select temp.Image;
+            try
+            {
+                cover = q.First();
+            }
+            catch
+            {
+
+            }
+            return cover;
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
