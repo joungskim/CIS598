@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CIS598PROJECT.Models.DrinkShot>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Drinks List";
+}
+
+<div class="padding-top-table">
+    <div class="create-new-tab">Drinks List</div>
+
+    <div class="create-new-tab">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+    <div class="search-tab">
+        <div class="float-left">
+            Search Drinks/Shots:
+        </div>
+        <div class="float-left">
+            @using (Html.BeginForm("Index", "DrinkShots", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.TextBox("earchString", "", new { htmlAttributes = new { @class = "form-control" } })
+            }
+        </div>
+        <div class="float-left">
+            <input type="submit" value="Search" class="btn-warning search-btn" />
+        </div>
+    </div>
+</div>
+<table class="zui-table zui-table-rounded">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                Submission @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                Submitted By
+            </th>
+            <th>
+                Ingredients
+            </th>
+            <th></th>
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Name, new { @class="ingredient-index"})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructions, new { @class = "ingredient-index" })
+            </td>
+            <td>
+                <img src="/DrinkShots/RetrieveImage/@item.Name" i alt="No Image Uploaded" height=100 width=100 />
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Cost, new { @class = "ingredient-index" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date, new { @class = "ingredient-index" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type, new { @class = "ingredient-index" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.User1, new { @class = "ingredient-index" })
+            </td>
+            <td>
+                @foreach (var d in item.IngrediantRecipes.Where(d => d.DSName == item.Name))
+                {
+                    <div>
+                        <a href="@Href("/Ingredients/Details/" + @d.IngrediantName)" class="ingredient-index">@d.IngrediantName</a>
+                    </div>
+                }
+            </td>
+            <td>
+                <div class="btn-block">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Name }, new { @class = "ingredient-index" })
+                </div>
+                <div class="btn-block">
+                    @Html.ActionLink("Details", "Details", new { id = item.Name }, new { @class = "ingredient-index" })
+                </div>
+                <div class="btn-block">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Name }, new { @class = "ingredient-index" })
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

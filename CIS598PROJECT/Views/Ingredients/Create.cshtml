@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control text-area" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,15 +35,20 @@
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
-                @*@Html.TextBoxFor(model => model.Image, new { type = "file" })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.SubmittedBy, "SubmittedBy", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.SubmittedBy, htmlAttributes: new { @Value = User.Identity.GetUserName(), @readonly="readonly", @class = "form-control"})
+                @if(User.Identity.GetUserName()!="")
+                {
+                    @Html.TextBoxFor(model => model.SubmittedBy, htmlAttributes: new { @Value = User.Identity.GetUserName(), @readonly="readonly", @class = "form-control"})
+                }
+                else
+                {
+                    @Html.TextBoxFor(model => model.SubmittedBy, htmlAttributes: new { @Value = "Anonymous", @readonly = "readonly", @class = "form-control" })
+                }
             </div>
         </div>
 
@@ -59,7 +64,7 @@
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @Value = DateTime.Now, @readonly="readonly", @class = "form-control" } })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @Value = DateTime.Now.ToString("yyyy-MM-dd"), @readonly = "readonly", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,13 +74,6 @@
             <div class="col-md-10">
 
                 @Html.ListBoxFor(model => model.Type, new SelectList(new[] { "Liqour", "Mixer", "Beer", "Wine", "liqueur", "Champagne" }), new { htmlAttributes = new { @class = "form-control" } })
-
-                @*@Html.DropDownListFor(model => model.Type,
-                Model.TypeList.Select(h => new SelectListItem {
-                    Text = h.ToString(),
-                    Value = h.ToString()
-                }), new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })*@
             </div>
         </div>
 

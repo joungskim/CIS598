@@ -227,6 +227,8 @@
     <Compile Include="Models\DrinkShot.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DrinkShotsController.cs" />
+    <Compile Include="Models\DSCreateModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Ingrediant.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
@@ -242,6 +244,7 @@
     <Compile Include="Models\MessageBoard.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MessagesController.cs" />
     <Compile Include="Models\Reply.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>
@@ -335,6 +338,16 @@
     <Content Include="Views\Ingredients\Edit.cshtml" />
     <Content Include="Views\Ingredients\Index.cshtml" />
     <Content Include="Views\Ingredients\_IdentityPartial.cshtml" />
+    <Content Include="Views\DrinkShots\Create.cshtml" />
+    <Content Include="Views\DrinkShots\Delete.cshtml" />
+    <Content Include="Views\DrinkShots\Details.cshtml" />
+    <Content Include="Views\DrinkShots\Edit.cshtml" />
+    <Content Include="Views\DrinkShots\Index.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -22,5 +22,6 @@ namespace CIS598PROJECT.Controllers
             imageBytes = reader.ReadBytes((int)image.ContentLength);
             return imageBytes;
         }
+
     }
 }

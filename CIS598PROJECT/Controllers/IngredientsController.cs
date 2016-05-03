@@ -130,10 +130,11 @@ namespace CIS598PROJECT.Models
             return RedirectToAction("Index");
         }
 
-        //Retrieve an image from a database
-        public ActionResult RetrieveImage(string name)
+        //Retrieve an image from a databases
+        [HttpGet]
+        public ActionResult RetrieveImage(string id)
         {
-            byte[] cover = GetImageFromDataBase(name);
+            byte[] cover = GetImageFromDataBase(id);
             if (cover != null)
             {
                 return File(cover, "image/jpg");
@@ -158,8 +159,21 @@ namespace CIS598PROJECT.Models
             }
             return cover;
         }
+        [HttpPost]
+        public ActionResult Index(string searchString)
+        {
+            var ingredients = from m in db.Ingrediants
+                         select m;
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ingredients = ingredients.Where(s => s.Name.Contains(searchString) || 
+                                                s.Type.Contains(searchString) || 
+                                                s.SubmittedBy.Contains(searchString));
+            }
 
+            return View(ingredients);
+        }
 
         protected override void Dispose(bool disposing)
         {
