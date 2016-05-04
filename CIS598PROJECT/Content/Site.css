@@ -1,7 +1,6 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-family: 'Candal', sans-serif; font-weight: 500;
     letter-spacing:1px;
     
 }
@@ -33,8 +32,6 @@ li {
     color:white;
 }
 a.panel{
-    
-    font-family: 'Candal', sans-serif; font-weight: 500;
 
 }
  .apple{
@@ -51,6 +48,13 @@ a.panel{
     display: block;
 
 }
+ .thumbnail-index{
+     border-radius: 80px;
+     display: block;
+     width: 100px;
+     height: 100px;
+     box-shadow: #957030, 10px 10px inset;
+ }
  .left-column{
      text-align:left;
  }
@@ -143,7 +147,7 @@ listbox:focus{
 }
 
 .zui-table {
-    border: solid 1px #DDEEEE;
+    border: none;
     border-collapse: collapse;
     border-spacing: 0;
     font: normal 13px Arial, sans-serif;
@@ -151,14 +155,14 @@ listbox:focus{
 }
 .zui-table thead th {
     background-color: #DDEFEF;
-    border: solid 1px #DDEEEE;
+    border: none;
     color: #336B6B;
     padding: 10px;
     text-align: center;
     text-shadow: 1px 1px 1px #fff;
 }
 .zui-table tbody td {
-    border: solid 1px #DDEEEE;
+    border: none; 
     color: #333;
     padding: 10px;
     text-shadow: 1px 1px 1px #fff;
@@ -180,16 +184,11 @@ listbox:focus{
     
 }
 .zui-table-rounded tbody td {
-    border: none;
+    
     border: solid 1px #957030;
     background-color: #EED592;
 }
-.zui-table-rounded tbody tr:last-child td:first-child {
-    border-radius: 0 0 0 10px;
-}
-.zui-table-rounded tbody tr:last-child td:last-child {
-    border-radius: 0 0 10px 0;
-}
+
 .create-new-tab{
     border-radius: 10px 10px 0px 0px; 
     -moz-border-radius: px 10px 10px 0px; 

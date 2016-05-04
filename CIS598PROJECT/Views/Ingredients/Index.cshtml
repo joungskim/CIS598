@@ -1,27 +1,31 @@
 ﻿@model IEnumerable<CIS598PROJECT.Models.Ingrediant>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ingredients List";
 }
 <div class="padding-top-table">
-    <div class="create-new-tab">Ingredients List</div>
+    <div class="create-new-tab">@Html.ActionLink("Alcohol List", "Index", "Ingredients")</div>
 
     <div class="create-new-tab">
         @Html.ActionLink("Create New", "Create")
     </div>
     <div class="search-tab">
         <div class="float-left">
-            Search Ingredients:
+            Search Drinks/Shots:
         </div>
-        <div class="float-left">
-             @using (Html.BeginForm()){
-                        @Html.TextBox("SearchString","", new { htmlAttributes = new { @class = "form-control" } })
-            }
-        </div>
-        <div class="float-left">
-            <input type="submit" value="Search" class="btn-warning search-btn"/>
-        </div>
+        @using (Html.BeginForm("Index", "Ingredients", FormMethod.Post))
+        {
+            <div class="float-left">
+
+                @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            <div class="float-left">
+                <input type="submit" value="Search" class="btn-warning search-btn" />
+            </div>
+        }
     </div>
+
 </div>
 <table class="zui-table zui-table-rounded">
     <tr>
@@ -63,7 +67,7 @@
 
             <td>
                 @*<img src="@Url.Action("RetrieveImage", "Ingrediants", new { name = item.Name })" alt="No Image Uploaded" height=100 width=200 />*@
-                <img src="/Ingredients/RetrieveImage/@item.Name" i alt="No Image Uploaded" height=100 width=100 />
+                <img class="thumbnail-index" src="/Ingredients/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
             </td>
             <td>
                 $@Html.DisplayFor(modelItem => item.CostLiter)
@@ -80,9 +84,10 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Name }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Name })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Name }) |
             </td>
         </tr>
+        
     }
 
 </table>

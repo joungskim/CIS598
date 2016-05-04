@@ -24,6 +24,44 @@ namespace CIS598PROJECT.Models
             return View(ingrediants.ToList());
         }
 
+        public byte[] GetImageFromDataBase(string name)
+        {
+            byte[] cover = null;
+            var q = from temp in db.Ingrediants where temp.Name.Equals(name) select temp.Image;
+            try
+            {
+                cover = q.First();
+            }
+            catch
+            {
+
+            }
+            return cover;
+        }
+        /// <summary>
+        /// Search for Ingredients index
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Index(string id)
+        {
+            var ingredients = from m in db.Ingrediants
+                              select m;
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                ingredients = ingredients.Where(s => s.Name.Contains(id) ||
+                                                s.Type.Contains(id) ||
+                                                s.SubmittedBy.Contains(id) ||
+                                                s.Description.Contains(id));
+
+            }
+
+            return View(ingredients);
+        }
+
+
         // GET: Ingredients/Details/5
         public ActionResult Details(string id)
         {
@@ -145,35 +183,6 @@ namespace CIS598PROJECT.Models
             }
         }
 
-        public byte[] GetImageFromDataBase(string name)
-        {
-            byte[] cover = null;
-            var q = from temp in db.Ingrediants where temp.Name.Equals(name) select temp.Image;
-            try
-            {
-                cover = q.First();
-            }
-            catch
-            {
-
-            }
-            return cover;
-        }
-        [HttpPost]
-        public ActionResult Index(string searchString)
-        {
-            var ingredients = from m in db.Ingrediants
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                ingredients = ingredients.Where(s => s.Name.Contains(searchString) || 
-                                                s.Type.Contains(searchString) || 
-                                                s.SubmittedBy.Contains(searchString));
-            }
-
-            return View(ingredients);
-        }
 
         protected override void Dispose(bool disposing)
         {

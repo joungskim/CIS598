@@ -5,14 +5,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create", "DrinkShots", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>DrinkShot</h4>
+        <h2>Create: Mix Drink or Shot</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -85,7 +84,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Alcohol List", "Index", "Ingredients")
 </div>
 
 @*$('option').mousedown(function(e) {

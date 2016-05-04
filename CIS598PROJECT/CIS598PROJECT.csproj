@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Controllers\DrinkShotsController.cs" />
     <Compile Include="Models\DSCreateModel.cs" />
+    <Compile Include="Models\HomeIndexModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Ingrediant.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
@@ -244,7 +245,7 @@
     <Compile Include="Models\MessageBoard.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MessagesController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Models\Reply.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>

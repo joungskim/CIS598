@@ -2,11 +2,11 @@
 @using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "Drinks List";
+    ViewBag.Title = "Mix List";
 }
 
 <div class="padding-top-table">
-    <div class="create-new-tab">Drinks List</div>
+    <div class="create-new-tab">@Html.ActionLink("Mix List", "Index")</div>
 
     <div class="create-new-tab">
         @Html.ActionLink("Create New", "Create")
@@ -15,15 +15,17 @@
         <div class="float-left">
             Search Drinks/Shots:
         </div>
+        @using (Html.BeginForm("Index", "DrinkShots", FormMethod.Post))
+        {
         <div class="float-left">
-            @using (Html.BeginForm("Index", "DrinkShots", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.TextBox("earchString", "", new { htmlAttributes = new { @class = "form-control" } })
-            }
+            
+                @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
+            
         </div>
         <div class="float-left">
             <input type="submit" value="Search" class="btn-warning search-btn" />
         </div>
+            }
     </div>
 </div>
 <table class="zui-table zui-table-rounded">
@@ -68,7 +70,7 @@
                 @Html.DisplayFor(modelItem => item.Instructions, new { @class = "ingredient-index" })
             </td>
             <td>
-                <img src="/DrinkShots/RetrieveImage/@item.Name" i alt="No Image Uploaded" height=100 width=100 />
+                <img class="thumbnail-index" src="/DrinkShots/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
             </td>
             <td>
                 $@Html.DisplayFor(modelItem => item.Cost, new { @class = "ingredient-index" })
