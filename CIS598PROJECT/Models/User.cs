@@ -18,12 +18,7 @@ namespace CIS598PROJECT.Models
         public User()
         {
             this.DrinkShots = new HashSet<DrinkShot>();
-            this.Ingrediants = new HashSet<Ingrediant>();
-            this.MessageBoards = new HashSet<MessageBoard>();
-            this.Messages = new HashSet<Message>();
-            this.Messages1 = new HashSet<Message>();
-            this.Replies = new HashSet<Reply>();
-            this.UserRatings = new HashSet<UserRating>();
+            this.Ingredients = new HashSet<Ingredient>();
         }
     
         public string User1 { get; set; }
@@ -35,20 +30,12 @@ namespace CIS598PROJECT.Models
         public string State { get; set; }
         public Nullable<int> Birthday { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<bool> Show { get; set; }
+        public Nullable<bool> Admin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DrinkShot> DrinkShots { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingrediant> Ingrediants { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MessageBoard> MessageBoards { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Message> Messages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Message> Messages1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reply> Replies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRating> UserRatings { get; set; }
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
     }
 }

@@ -6,6 +6,5 @@
 	[Rating] int NOT NULL,
 	[Description] VARCHAR(MAX) NOT NULL,
 	[Date] date NOT NULL, 
-    CONSTRAINT [FK_UserRating_ToTable] FOREIGN KEY ([DSName]) REFERENCES [dbo].[DrinkShot]([Name]), 
-    CONSTRAINT [FK_UserRating_ToTable_1] FOREIGN KEY ([SubmittedBy]) REFERENCES [dbo].[User]([User])
+	[Show]         BIT			  DEFAULT 1
 )

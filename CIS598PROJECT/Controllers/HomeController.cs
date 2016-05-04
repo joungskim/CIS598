@@ -14,14 +14,14 @@ namespace CIS598PROJECT.Controllers
 {
     public class HomeController : Controller
     {
-        private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
+        private BTBDatabaseEntities2 db = new BTBDatabaseEntities2();
 
         public ActionResult Index()
         {
             var HIModel = new HomeIndexModel();
             var DrinkShots = (from m in db.DrinkShots
                                  select m).ToList();
-            //.IngredientList = (from m in db.Ingrediants
+            //.IngredientList = (from m in db.Ingredients
             //                        orderby m.Name
             //                        select m).ToList();
             return View(DrinkShots);

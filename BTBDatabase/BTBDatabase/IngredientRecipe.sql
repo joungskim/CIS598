@@ -4,6 +4,7 @@
 	[DSName] nvarchar(50) NOT Null,
 	[IngredientName] nvarchar(50) not null,
 	[Ounces] decimal not null, 
+	[Show]         BIT			  DEFAULT 1,
     CONSTRAINT [FK_IngredientRecipe_ToTable] FOREIGN KEY ([DSName]) REFERENCES [dbo].[DrinkShot]([Name]), 
     CONSTRAINT [FK_IngredientRecipe_ToTable_1] FOREIGN KEY ([IngredientName]) REFERENCES [dbo].[Ingredients]([Name])
 )

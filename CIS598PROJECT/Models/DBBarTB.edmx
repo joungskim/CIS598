@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BTBDatabase_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BTBDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -22,19 +22,21 @@
           <Property Name="ViewCount" Type="int" />
           <Property Name="Image" Type="image" />
           <Property Name="Cost" Type="money" />
-          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
-        <EntityType Name="IngrediantRecipe">
+        <EntityType Name="IngredientRecipe">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="DSName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IngrediantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IngredientName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Ounces" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
-        <EntityType Name="Ingrediants">
+        <EntityType Name="Ingredients">
           <Key>
             <PropertyRef Name="Name" />
           </Key>
@@ -43,8 +45,9 @@
           <Property Name="Image" Type="image" />
           <Property Name="SubmittedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CostLiter" Type="money" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
         <EntityType Name="MessageBoard">
           <Key>
@@ -56,6 +59,7 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Image" Type="image" />
           <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -79,6 +83,7 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="SubmittedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Image" Type="image" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -93,6 +98,8 @@
           <Property Name="State" Type="nchar" MaxLength="2" Nullable="false" />
           <Property Name="Birthday" Type="int" />
           <Property Name="Date" Type="date" />
+          <Property Name="Show" Type="bit" />
+          <Property Name="Admin" Type="bit" />
         </EntityType>
         <EntityType Name="UserRating">
           <Key>
@@ -104,6 +111,7 @@
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Show" Type="bit" />
         </EntityType>
         <Association Name="FK_DrinkShot_ToTable">
           <End Role="User" Type="Self.User" Multiplicity="1">
@@ -119,131 +127,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IngrediantRecipe_ToTable">
+        <Association Name="FK_IngredientRecipe_ToTable">
           <End Role="DrinkShot" Type="Self.DrinkShot" Multiplicity="1" />
-          <End Role="IngrediantRecipe" Type="Self.IngrediantRecipe" Multiplicity="*" />
+          <End Role="IngredientRecipe" Type="Self.IngredientRecipe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DrinkShot">
               <PropertyRef Name="Name" />
             </Principal>
-            <Dependent Role="IngrediantRecipe">
+            <Dependent Role="IngredientRecipe">
               <PropertyRef Name="DSName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IngrediantRecipe_ToTable_1">
-          <End Role="Ingrediants" Type="Self.Ingrediants" Multiplicity="1" />
-          <End Role="IngrediantRecipe" Type="Self.IngrediantRecipe" Multiplicity="*" />
+        <Association Name="FK_IngredientRecipe_ToTable_1">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+          <End Role="IngredientRecipe" Type="Self.IngredientRecipe" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Ingrediants">
+            <Principal Role="Ingredients">
               <PropertyRef Name="Name" />
             </Principal>
-            <Dependent Role="IngrediantRecipe">
-              <PropertyRef Name="IngrediantName" />
+            <Dependent Role="IngredientRecipe">
+              <PropertyRef Name="IngredientName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ingrediants_ToTable">
+        <Association Name="FK_Ingredients_ToTable">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Ingrediants" Type="Self.Ingrediants" Multiplicity="*" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="User" />
             </Principal>
-            <Dependent Role="Ingrediants">
+            <Dependent Role="Ingredients">
               <PropertyRef Name="SubmittedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MessageBoard_ToTable">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User" />
-            </Principal>
-            <Dependent Role="MessageBoard">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Messages_ToTable">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="FromUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Messages_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="ToUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Replies_ToTable">
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="1" />
-          <End Role="Replies" Type="Self.Replies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MessageBoard">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Replies">
-              <PropertyRef Name="MBID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Replies_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Replies" Type="Self.Replies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User" />
-            </Principal>
-            <Dependent Role="Replies">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRating_ToTable">
-          <End Role="DrinkShot" Type="Self.DrinkShot" Multiplicity="1" />
-          <End Role="UserRating" Type="Self.UserRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DrinkShot">
-              <PropertyRef Name="Name" />
-            </Principal>
-            <Dependent Role="UserRating">
-              <PropertyRef Name="DSName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRating_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserRating" Type="Self.UserRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User" />
-            </Principal>
-            <Dependent Role="UserRating">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="BTBDatabase_1ModelStoreContainer">
+        <EntityContainer Name="BTBDatabaseModelStoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DrinkShot" EntityType="Self.DrinkShot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="IngrediantRecipe" EntityType="Self.IngrediantRecipe" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ingrediants" EntityType="Self.Ingrediants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngredientRecipe" EntityType="Self.IngredientRecipe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MessageBoard" EntityType="Self.MessageBoard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Replies" EntityType="Self.Replies" Schema="dbo" store:Type="Tables" />
@@ -253,52 +177,24 @@
             <End Role="User" EntitySet="User" />
             <End Role="DrinkShot" EntitySet="DrinkShot" />
           </AssociationSet>
-          <AssociationSet Name="FK_IngrediantRecipe_ToTable" Association="Self.FK_IngrediantRecipe_ToTable">
+          <AssociationSet Name="FK_IngredientRecipe_ToTable" Association="Self.FK_IngredientRecipe_ToTable">
             <End Role="DrinkShot" EntitySet="DrinkShot" />
-            <End Role="IngrediantRecipe" EntitySet="IngrediantRecipe" />
+            <End Role="IngredientRecipe" EntitySet="IngredientRecipe" />
           </AssociationSet>
-          <AssociationSet Name="FK_IngrediantRecipe_ToTable_1" Association="Self.FK_IngrediantRecipe_ToTable_1">
-            <End Role="Ingrediants" EntitySet="Ingrediants" />
-            <End Role="IngrediantRecipe" EntitySet="IngrediantRecipe" />
+          <AssociationSet Name="FK_IngredientRecipe_ToTable_1" Association="Self.FK_IngredientRecipe_ToTable_1">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="IngredientRecipe" EntitySet="IngredientRecipe" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ingrediants_ToTable" Association="Self.FK_Ingrediants_ToTable">
+          <AssociationSet Name="FK_Ingredients_ToTable" Association="Self.FK_Ingredients_ToTable">
             <End Role="User" EntitySet="User" />
-            <End Role="Ingrediants" EntitySet="Ingrediants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MessageBoard_ToTable" Association="Self.FK_MessageBoard_ToTable">
-            <End Role="User" EntitySet="User" />
-            <End Role="MessageBoard" EntitySet="MessageBoard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messages_ToTable" Association="Self.FK_Messages_ToTable">
-            <End Role="User" EntitySet="User" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messages_ToTable_1" Association="Self.FK_Messages_ToTable_1">
-            <End Role="User" EntitySet="User" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Replies_ToTable" Association="Self.FK_Replies_ToTable">
-            <End Role="MessageBoard" EntitySet="MessageBoard" />
-            <End Role="Replies" EntitySet="Replies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Replies_ToTable_1" Association="Self.FK_Replies_ToTable_1">
-            <End Role="User" EntitySet="User" />
-            <End Role="Replies" EntitySet="Replies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRating_ToTable" Association="Self.FK_UserRating_ToTable">
-            <End Role="DrinkShot" EntitySet="DrinkShot" />
-            <End Role="UserRating" EntitySet="UserRating" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRating_ToTable_1" Association="Self.FK_UserRating_ToTable_1">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserRating" EntitySet="UserRating" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BTBDatabase_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BTBDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -316,24 +212,25 @@
           <Property Name="ViewCount" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Show" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_DrinkShot_ToTable" FromRole="DrinkShot" ToRole="User" />
-          <NavigationProperty Name="IngrediantRecipes" Relationship="Self.FK_IngrediantRecipe_ToTable" FromRole="DrinkShot" ToRole="IngrediantRecipe" />
-          <NavigationProperty Name="UserRatings" Relationship="Self.FK_UserRating_ToTable" FromRole="DrinkShot" ToRole="UserRating" />
+          <NavigationProperty Name="IngredientRecipes" Relationship="Self.FK_IngredientRecipe_ToTable" FromRole="DrinkShot" ToRole="IngredientRecipe" />
         </EntityType>
-        <EntityType Name="IngrediantRecipe">
+        <EntityType Name="IngredientRecipe">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="DSName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IngrediantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IngredientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Ounces" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="DrinkShot" Relationship="Self.FK_IngrediantRecipe_ToTable" FromRole="IngrediantRecipe" ToRole="DrinkShot" />
-          <NavigationProperty Name="Ingrediant" Relationship="Self.FK_IngrediantRecipe_ToTable_1" FromRole="IngrediantRecipe" ToRole="Ingrediants" />
+          <Property Name="Show" Type="Boolean" />
+          <NavigationProperty Name="DrinkShot" Relationship="Self.FK_IngredientRecipe_ToTable" FromRole="IngredientRecipe" ToRole="DrinkShot" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.FK_IngredientRecipe_ToTable_1" FromRole="IngredientRecipe" ToRole="Ingredients" />
         </EntityType>
-        <EntityType Name="Ingrediant">
+        <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="Name" />
           </Key>
@@ -342,10 +239,11 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CostLiter" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="IngrediantRecipes" Relationship="Self.FK_IngrediantRecipe_ToTable_1" FromRole="Ingrediants" ToRole="IngrediantRecipe" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Ingrediants_ToTable" FromRole="Ingrediants" ToRole="User" />
+          <Property Name="Show" Type="Boolean" />
+          <NavigationProperty Name="IngredientRecipes" Relationship="Self.FK_IngredientRecipe_ToTable_1" FromRole="Ingredients" ToRole="IngredientRecipe" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Ingredients_ToTable" FromRole="Ingredients" ToRole="User" />
         </EntityType>
         <EntityType Name="MessageBoard">
           <Key>
@@ -357,8 +255,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_MessageBoard_ToTable" FromRole="MessageBoard" ToRole="User" />
-          <NavigationProperty Name="Replies" Relationship="Self.FK_Replies_ToTable" FromRole="MessageBoard" ToRole="Replies" />
+          <Property Name="Show" Type="Boolean" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -371,8 +268,6 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Show" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Messages_ToTable" FromRole="Messages" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Messages_ToTable_1" FromRole="Messages" ToRole="User" />
         </EntityType>
         <EntityType Name="Reply">
           <Key>
@@ -384,8 +279,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SubmittedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="MessageBoard" Relationship="Self.FK_Replies_ToTable" FromRole="Replies" ToRole="MessageBoard" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Replies_ToTable_1" FromRole="Replies" ToRole="User" />
+          <Property Name="Show" Type="Boolean" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -400,13 +294,10 @@
           <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Birthday" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Show" Type="Boolean" />
+          <Property Name="Admin" Type="Boolean" />
           <NavigationProperty Name="DrinkShots" Relationship="Self.FK_DrinkShot_ToTable" FromRole="User" ToRole="DrinkShot" />
-          <NavigationProperty Name="Ingrediants" Relationship="Self.FK_Ingrediants_ToTable" FromRole="User" ToRole="Ingrediants" />
-          <NavigationProperty Name="MessageBoards" Relationship="Self.FK_MessageBoard_ToTable" FromRole="User" ToRole="MessageBoard" />
-          <NavigationProperty Name="Messages" Relationship="Self.FK_Messages_ToTable" FromRole="User" ToRole="Messages" />
-          <NavigationProperty Name="Messages1" Relationship="Self.FK_Messages_ToTable_1" FromRole="User" ToRole="Messages" />
-          <NavigationProperty Name="Replies" Relationship="Self.FK_Replies_ToTable_1" FromRole="User" ToRole="Replies" />
-          <NavigationProperty Name="UserRatings" Relationship="Self.FK_UserRating_ToTable_1" FromRole="User" ToRole="UserRating" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_Ingredients_ToTable" FromRole="User" ToRole="Ingredients" />
         </EntityType>
         <EntityType Name="UserRating">
           <Key>
@@ -418,8 +309,7 @@
           <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="DrinkShot" Relationship="Self.FK_UserRating_ToTable" FromRole="UserRating" ToRole="DrinkShot" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserRating_ToTable_1" FromRole="UserRating" ToRole="User" />
+          <Property Name="Show" Type="Boolean" />
         </EntityType>
         <Association Name="FK_DrinkShot_ToTable">
           <End Role="User" Type="Self.User" Multiplicity="1">
@@ -435,131 +325,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IngrediantRecipe_ToTable">
+        <Association Name="FK_IngredientRecipe_ToTable">
           <End Role="DrinkShot" Type="Self.DrinkShot" Multiplicity="1" />
-          <End Role="IngrediantRecipe" Type="Self.IngrediantRecipe" Multiplicity="*" />
+          <End Role="IngredientRecipe" Type="Self.IngredientRecipe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DrinkShot">
               <PropertyRef Name="Name" />
             </Principal>
-            <Dependent Role="IngrediantRecipe">
+            <Dependent Role="IngredientRecipe">
               <PropertyRef Name="DSName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserRating_ToTable">
-          <End Role="DrinkShot" Type="Self.DrinkShot" Multiplicity="1" />
-          <End Role="UserRating" Type="Self.UserRating" Multiplicity="*" />
+        <Association Name="FK_IngredientRecipe_ToTable_1">
+          <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="IngredientRecipe" Type="Self.IngredientRecipe" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DrinkShot">
+            <Principal Role="Ingredients">
               <PropertyRef Name="Name" />
             </Principal>
-            <Dependent Role="UserRating">
-              <PropertyRef Name="DSName" />
+            <Dependent Role="IngredientRecipe">
+              <PropertyRef Name="IngredientName" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IngrediantRecipe_ToTable_1">
-          <End Role="Ingrediants" Type="Self.Ingrediant" Multiplicity="1" />
-          <End Role="IngrediantRecipe" Type="Self.IngrediantRecipe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ingrediants">
-              <PropertyRef Name="Name" />
-            </Principal>
-            <Dependent Role="IngrediantRecipe">
-              <PropertyRef Name="IngrediantName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ingrediants_ToTable">
+        <Association Name="FK_Ingredients_ToTable">
           <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Ingrediants" Type="Self.Ingrediant" Multiplicity="*" />
+          <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="User1" />
             </Principal>
-            <Dependent Role="Ingrediants">
+            <Dependent Role="Ingredients">
               <PropertyRef Name="SubmittedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MessageBoard_ToTable">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User1" />
-            </Principal>
-            <Dependent Role="MessageBoard">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Replies_ToTable">
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="1" />
-          <End Role="Replies" Type="Self.Reply" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MessageBoard">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Replies">
-              <PropertyRef Name="MBID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Messages_ToTable">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Messages" Type="Self.Message" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User1" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="FromUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Messages_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Messages" Type="Self.Message" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User1" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="ToUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Replies_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Replies" Type="Self.Reply" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User1" />
-            </Principal>
-            <Dependent Role="Replies">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRating_ToTable_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserRating" Type="Self.UserRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="User1" />
-            </Principal>
-            <Dependent Role="UserRating">
-              <PropertyRef Name="SubmittedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="BTBDatabase_1Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BTBDatabaseEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="DrinkShots" EntityType="Self.DrinkShot" />
-          <EntitySet Name="IngrediantRecipes" EntityType="Self.IngrediantRecipe" />
-          <EntitySet Name="Ingrediants" EntityType="Self.Ingrediant" />
+          <EntitySet Name="IngredientRecipes" EntityType="Self.IngredientRecipe" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
           <EntitySet Name="MessageBoards" EntityType="Self.MessageBoard" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Replies" EntityType="Self.Reply" />
@@ -569,45 +375,17 @@
             <End Role="User" EntitySet="Users" />
             <End Role="DrinkShot" EntitySet="DrinkShots" />
           </AssociationSet>
-          <AssociationSet Name="FK_IngrediantRecipe_ToTable" Association="Self.FK_IngrediantRecipe_ToTable">
+          <AssociationSet Name="FK_IngredientRecipe_ToTable" Association="Self.FK_IngredientRecipe_ToTable">
             <End Role="DrinkShot" EntitySet="DrinkShots" />
-            <End Role="IngrediantRecipe" EntitySet="IngrediantRecipes" />
+            <End Role="IngredientRecipe" EntitySet="IngredientRecipes" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserRating_ToTable" Association="Self.FK_UserRating_ToTable">
-            <End Role="DrinkShot" EntitySet="DrinkShots" />
-            <End Role="UserRating" EntitySet="UserRatings" />
+          <AssociationSet Name="FK_IngredientRecipe_ToTable_1" Association="Self.FK_IngredientRecipe_ToTable_1">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="IngredientRecipe" EntitySet="IngredientRecipes" />
           </AssociationSet>
-          <AssociationSet Name="FK_IngrediantRecipe_ToTable_1" Association="Self.FK_IngrediantRecipe_ToTable_1">
-            <End Role="Ingrediants" EntitySet="Ingrediants" />
-            <End Role="IngrediantRecipe" EntitySet="IngrediantRecipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ingrediants_ToTable" Association="Self.FK_Ingrediants_ToTable">
+          <AssociationSet Name="FK_Ingredients_ToTable" Association="Self.FK_Ingredients_ToTable">
             <End Role="User" EntitySet="Users" />
-            <End Role="Ingrediants" EntitySet="Ingrediants" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MessageBoard_ToTable" Association="Self.FK_MessageBoard_ToTable">
-            <End Role="User" EntitySet="Users" />
-            <End Role="MessageBoard" EntitySet="MessageBoards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Replies_ToTable" Association="Self.FK_Replies_ToTable">
-            <End Role="MessageBoard" EntitySet="MessageBoards" />
-            <End Role="Replies" EntitySet="Replies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messages_ToTable" Association="Self.FK_Messages_ToTable">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messages_ToTable_1" Association="Self.FK_Messages_ToTable_1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Replies_ToTable_1" Association="Self.FK_Replies_ToTable_1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Replies" EntitySet="Replies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRating_ToTable_1" Association="Self.FK_UserRating_ToTable_1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserRating" EntitySet="UserRatings" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -615,16 +393,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BTBDatabase_1ModelStoreContainer" CdmEntityContainer="BTBDatabase_1Entities2">
+        <EntityContainerMapping StorageEntityContainer="BTBDatabaseModelStoreContainer" CdmEntityContainer="BTBDatabaseEntities2">
           <EntitySetMapping Name="C__RefactorLog">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.C__RefactorLog">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.C__RefactorLog">
               <MappingFragment StoreEntitySet="__RefactorLog">
                 <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DrinkShots">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.DrinkShot">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.DrinkShot">
               <MappingFragment StoreEntitySet="DrinkShot">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
@@ -635,22 +413,24 @@
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IngrediantRecipes">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.IngrediantRecipe">
-              <MappingFragment StoreEntitySet="IngrediantRecipe">
+          <EntitySetMapping Name="IngredientRecipes">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.IngredientRecipe">
+              <MappingFragment StoreEntitySet="IngredientRecipe">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DSName" ColumnName="DSName" />
-                <ScalarProperty Name="IngrediantName" ColumnName="IngrediantName" />
+                <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
                 <ScalarProperty Name="Ounces" ColumnName="Ounces" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Ingrediants">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.Ingrediant">
-              <MappingFragment StoreEntitySet="Ingrediants">
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredients">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -658,11 +438,12 @@
                 <ScalarProperty Name="CostLiter" ColumnName="CostLiter" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MessageBoards">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.MessageBoard">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.MessageBoard">
               <MappingFragment StoreEntitySet="MessageBoard">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
@@ -670,11 +451,12 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.Message">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.Message">
               <MappingFragment StoreEntitySet="Messages">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FromUser" ColumnName="FromUser" />
@@ -687,7 +469,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Replies">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.Reply">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.Reply">
               <MappingFragment StoreEntitySet="Replies">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MBID" ColumnName="MBID" />
@@ -695,11 +477,12 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="SubmittedBy" ColumnName="SubmittedBy" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.User">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="User1" ColumnName="User" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -710,11 +493,13 @@
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserRatings">
-            <EntityTypeMapping TypeName="BTBDatabase_1Model.UserRating">
+            <EntityTypeMapping TypeName="BTBDatabaseModel.UserRating">
               <MappingFragment StoreEntitySet="UserRating">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DSName" ColumnName="DSName" />
@@ -722,6 +507,7 @@
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Show" ColumnName="Show" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

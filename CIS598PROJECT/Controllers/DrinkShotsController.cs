@@ -11,20 +11,23 @@ namespace CIS598PROJECT.Models
 {
     public class DrinkShotsController : Controller
     {
-        private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
+        private BTBDatabaseEntities2 db = new BTBDatabaseEntities2();
 
         // GET: DrinkShots
         public ActionResult Index()
         {
             var drinkShots = db.DrinkShots.Include(d => d.User);
+            drinkShots = drinkShots.Where(d => d.Show != false);
             return View(drinkShots.ToList());
         }
         [HttpPost]
         public ActionResult Index(string id)
         {
             var drinkshots = from m in db.DrinkShots
+                              where m.Show !=false
                               select m;
-            var ingredients = from m in db.IngrediantRecipes
+            var ingredients = from m in db.IngredientRecipes
+                              where m.Show != false
                               select m;
 
             if (!String.IsNullOrEmpty(id))
@@ -32,7 +35,6 @@ namespace CIS598PROJECT.Models
                 drinkshots = drinkshots.Where(s => s.Name.Contains(id) ||
                                                 s.Type.Contains(id) ||
                                                 s.SubmittedBy.Contains(id));
-                
             }
 
             return View(drinkshots);
@@ -45,7 +47,7 @@ namespace CIS598PROJECT.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkShot drinkShot = db.DrinkShots.Find(id);
-            if (drinkShot == null)
+            if (drinkShot == null || drinkShot.Show == false)
             {
                 return HttpNotFound();
             }
@@ -57,7 +59,8 @@ namespace CIS598PROJECT.Models
         {
             ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
             var model = new DSCreateModel();
-            model.IngredientList = (from m in db.Ingrediants
+            model.IngredientList = (from m in db.Ingredients
+                                    where m.Show != false
                                     orderby m.Name
                                     select m).ToList();
             return View(model);
@@ -72,22 +75,23 @@ namespace CIS598PROJECT.Models
         //public ActionResult Create([Bind(Include = "Name,SubmittedBy,Instructions,RatingTotal,ViewCount,Image,Cost,Date,Type")] DrinkShot drinkShot)
         {
             HttpPostedFileBase file = Request.Files["ImageData"];
-            BTBDatabase_1Entities2 service = new BTBDatabase_1Entities2();
-            db = new BTBDatabase_1Entities2();
+            BTBDatabaseEntities2 service = new BTBDatabaseEntities2();
+            db = new BTBDatabaseEntities2();
             DSCreate.Drinkshot.Image = new Controllers.ConversionController().ConvertToBytes(file);
             DSCreate.Drinkshot.Cost = System.Convert.ToDecimal(CalculateCost(DSCreate.SelectedIngredients).ToString("#.##"));
             DSCreate.Drinkshot.RatingTotal = 0;
             DSCreate.Drinkshot.ViewCount = 0;
+            DSCreate.Drinkshot.Date = DateTime.UtcNow;
             
             for (int i = 0; i < DSCreate.SelectedIngredients.Count(); i++)
             {
                 
-                DSCreate.Recipe = new IngrediantRecipe();
+                DSCreate.Recipe = new IngredientRecipe();
                 DSCreate.Recipe.DSName = DSCreate.Drinkshot.Name;
-                DSCreate.Recipe.IngrediantName = DSCreate.SelectedIngredients[i];
+                DSCreate.Recipe.IngredientName = DSCreate.SelectedIngredients[i];
                 DSCreate.Recipe.Ounces = 0;
-                DSCreate.Recipe.Id = 1 + i + db.IngrediantRecipes.Count();
-                db.IngrediantRecipes.Add(DSCreate.Recipe);
+                DSCreate.Recipe.Id = 1 + i + db.IngredientRecipes.Count();
+                db.IngredientRecipes.Add(DSCreate.Recipe);
             }
             db.DrinkShots.Add(DSCreate.Drinkshot);
             if (ModelState.IsValid)
@@ -96,7 +100,7 @@ namespace CIS598PROJECT.Models
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            DSCreate.IngredientList = (from m in db.Ingrediants
+            DSCreate.IngredientList = (from m in db.Ingredients
                                     orderby m.Name
                                     select m).ToList();
             ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email", DSCreate.Drinkshot);
@@ -111,7 +115,7 @@ namespace CIS598PROJECT.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkShot drinkShot = db.DrinkShots.Find(id);
-            if (drinkShot == null)
+            if (drinkShot == null || drinkShot.Show==false)
             {
                 return HttpNotFound();
             }
@@ -122,16 +126,25 @@ namespace CIS598PROJECT.Models
         // POST: DrinkShots/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Name,SubmittedBy,Instructions,RatingTotal,ViewCount,Image,Cost,Date,Type")] DrinkShot drinkShot)
         {
+            ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            BTBDatabaseEntities2 service = new BTBDatabaseEntities2();
+            drinkShot.Date = DateTime.UtcNow;
+            db = new BTBDatabaseEntities2();
+            drinkShot.Image = new Controllers.ConversionController().ConvertToBytes(file);
+
             if (ModelState.IsValid)
             {
                 db.Entry(drinkShot).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email", drinkShot.SubmittedBy);
             return View(drinkShot);
         }
@@ -144,7 +157,7 @@ namespace CIS598PROJECT.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkShot drinkShot = db.DrinkShots.Find(id);
-            if (drinkShot == null)
+            if (drinkShot == null || drinkShot.Show == false)
             {
                 return HttpNotFound();
             }
@@ -157,8 +170,8 @@ namespace CIS598PROJECT.Models
         public ActionResult DeleteConfirmed(string id)
         {
             DrinkShot drinkShot = db.DrinkShots.Find(id);
-            db.DrinkShots.Remove(drinkShot);
-            List<IngrediantRecipe> recipe = db.IngrediantRecipes.Where(m=>m.DSName.Equals(id)).ToList();
+            drinkShot.Show = false;
+            db.Entry(drinkShot).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -175,7 +188,7 @@ namespace CIS598PROJECT.Models
             for (int i = 0; i < Ingredients.Count(); i++)
             {
                 decimal temp = 0;
-                var c = db.Ingrediants.Find(Ingredients[i]);
+                var c = db.Ingredients.Find(Ingredients[i]);
                 if (c.CostLiter.HasValue) temp = c.CostLiter.Value;
                 temp = decimal.Divide((temp * System.Convert.ToDecimal(1.25)), System.Convert.ToDecimal(33.81 * Ingredients.Count()));
                 cost += temp;

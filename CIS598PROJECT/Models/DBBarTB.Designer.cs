@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\Models\BTBDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\Models\DBBarTB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -11,12 +11,12 @@ namespace CIS598PROJECT.Models
 {
     public class MessagesController : Controller
     {
-        private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
+        private BTBDatabaseEntities2 db = new BTBDatabaseEntities2();
 
         // GET: Messages
         public ActionResult Index()
         {
-            var messages = db.Messages.Include(m => m.User).Include(m => m.User1);
+            var messages = db.Messages;
             return View(messages.ToList());
         }
 

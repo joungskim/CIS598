@@ -85,10 +85,10 @@
                 @Html.DisplayFor(modelItem => item.User.User1, new { @class = "ingredient-index" })
             </td>
             <td>
-                @foreach (var d in item.IngrediantRecipes.Where(d => d.DSName == item.Name))
+                @foreach (var d in item.IngredientRecipes.Where(d => d.DSName == item.Name))
                 {
                     <div>
-                        <a href="@Href("/Ingredients/Details/" + @d.IngrediantName)" class="ingredient-index">@d.IngrediantName</a>
+                        <a href="@Href("/Ingredients/Details/" + @d.IngredientName)" class="ingredient-index">@d.IngredientName</a>
                     </div>
                 }
             </td>

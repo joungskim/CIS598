@@ -1,4 +1,4 @@
-﻿@model CIS598PROJECT.Models.Ingrediant
+﻿@model CIS598PROJECT.Models.Ingredient
 @using Microsoft.AspNet.Identity
 
 @{
@@ -71,7 +71,7 @@
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.ListBoxFor(model => model.Type, new SelectList(new[] { "Liqour", "Mixer", "Beer", "Wine", "liqueur", "Champagne" }), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Type, new SelectList(new[] { "Liqour", "Mixer", "Beer", "Wine", "Liqueur", "Champagne" }), new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 

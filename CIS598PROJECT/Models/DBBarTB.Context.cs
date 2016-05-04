@@ -13,10 +13,10 @@ namespace CIS598PROJECT.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BTBDatabaseEntities : DbContext
+    public partial class BTBDatabaseEntities2 : DbContext
     {
-        public BTBDatabaseEntities()
-            : base("name=BTBDatabaseEntities")
+        public BTBDatabaseEntities2()
+            : base("name=BTBDatabaseEntities2")
         {
         }
     

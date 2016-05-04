@@ -20,8 +20,6 @@ namespace CIS598PROJECT.Models
         public System.DateTime Date { get; set; }
         public string SubmittedBy { get; set; }
         public byte[] Image { get; set; }
-    
-        public virtual MessageBoard MessageBoard { get; set; }
-        public virtual User User { get; set; }
+        public Nullable<bool> Show { get; set; }
     }
 }

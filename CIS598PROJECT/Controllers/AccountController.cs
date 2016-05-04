@@ -17,7 +17,7 @@ namespace CIS598PROJECT.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private BTBDatabase_1Entities2 db = new BTBDatabase_1Entities2();
+        private BTBDatabaseEntities2 db = new BTBDatabaseEntities2();
 
         public AccountController()
         {

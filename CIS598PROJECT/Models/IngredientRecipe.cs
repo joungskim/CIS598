@@ -18,6 +18,7 @@ namespace CIS598PROJECT.Models
         public string DSName { get; set; }
         public string IngredientName { get; set; }
         public decimal Ounces { get; set; }
+        public Nullable<bool> Show { get; set; }
     
         public virtual DrinkShot DrinkShot { get; set; }
         public virtual Ingredient Ingredient { get; set; }

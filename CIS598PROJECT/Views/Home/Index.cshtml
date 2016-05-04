@@ -68,76 +68,78 @@
             <div class="row col-md-12 div-overflow">
                 @foreach (var item in Model)
                 {
-                <div class="collapse navbar-collapse col-md-3" id="Recipe-1">
-                    <div class="panel panel-heading" style="width:200px">
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe" aria-expanded="false" aria-controls="panel-reipe">Instructions</a>
-                    </div>
-                    <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
+                    <div class="height-body-home">
+                        <div class="collapse navbar-collapse col-md-3" id="Recipe-1">
+                            <div class="panel panel-heading" style="width:200px">
+                                <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe" aria-expanded="false" aria-controls="panel-reipe">Instructions</a>
+                            </div>
+                            <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
 
-                        <ul>
+                                <ul>
 
-                            <li>
-                                <label for="Leftt-column">Instructions:</label>
-                                <p></p>@Html.DisplayFor(modelItem => item.Instructions)<br /><br /><br /><br /><br />
-                            </li>
-                            <li>
-                                <label style="margin-right:-25%; position: absolute; bottom: 0;" for="Bottomleft-column"><h2>Rating:</h2></label>
-                            </li>
-                        </ul>
+                                    <li>
+                                        <label for="Leftt-column">Instructions:</label>
+                                        <p></p>@Html.DisplayFor(modelItem => item.Instructions)<br /><br /><br /><br /><br />
+                                    </li>
+                                    <li>
+                                        <label style="margin-right:-25%; position: absolute; bottom: 0;" for="Bottomleft-column"><h2>Rating:</h2></label>
+                                    </li>
+                                </ul>
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
                
-                <div class="collapse navbar-collapse col-md-4" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
-                    <div class="panel panel-heading" style="width:200px">
+                        <div class="collapse navbar-collapse col-md-4" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
+                            <div class="panel panel-heading" style="width:200px">
 
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name" aria-expanded="false" aria-controls="panel-drink-name">Washinton Apple</a>
+                                <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name" aria-expanded="false" aria-controls="panel-drink-name">Washinton Apple</a>
 
-                    </div>
-                    <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
-                        <ul>
-                            <li>
-                                <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
-                            </li>
+                            </div>
+                            <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
+                                <ul>
+                                    <li>
+                                        <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
+                                    </li>
 
 
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse col-md-3 sidebar-outer" id="Ingrediants-1">
-                    <div class="panel panel-heading" style="width:200px">
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingrediants" aria-expanded="false">Ingredients</a>
-                    </div>
-                    <div id="panel-Ingrediants" class="panel-collapse collapse in sidebar" style="max-width:350px">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse col-md-3 sidebar-outer" id="Ingredients-1">
+                            <div class="panel panel-heading" style="width:200px">
+                                <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingredients" aria-expanded="false">Ingredients</a>
+                            </div>
+                            <div id="panel-Ingredients" class="panel-collapse collapse in sidebar" style="max-width:350px">
 
-                        <ul>
-                            <li>
-                                <label for="Right-column"><h2>Ingredients:</h2></label>
-                                <p style="margin-left:30%;">Insert ingredients</p>
-                            </li>
-                            <li style="margin-left:30%;">
+                                <ul>
+                                    <li>
+                                        <label for="Right-column"><h2>Ingredients:</h2></label>
+                                        <p style="margin-left:30%;">Insert ingredients</p>
+                                    </li>
+                                    <li style="margin-left:30%;">
 
-                                Crown
-                            </li>
-                            <li style="margin-left:30%;">
-                                Peach
-                            </li>
-                            <li style="margin-left:30%;">
-                                Cranberry Juice
-                            </li>
-                            <li style="margin-left:35%;">
-                                @Html.ActionLink("Full Ingredients List", "Index", "Ingredients")
-                            </li>
-                            <li>
-                                <label style="margin-left:50%;position: absolute; bottom: 0;" for="Bottomright-column"><h2>Comments:</h2></label>
-                                <p style="margin-left:50%;">Insert comments</p>
-                            </li>
-                        </ul>
+                                        Crown
+                                    </li>
+                                    <li style="margin-left:30%;">
+                                        Peach
+                                    </li>
+                                    <li style="margin-left:30%;">
+                                        Cranberry Juice
+                                    </li>
+                                    <li style="margin-left:35%;">
+                                        @Html.ActionLink("Full Ingredients List", "Index", "Ingredients")
+                                    </li>
+                                    <li>
+                                        <label style="margin-left:50%;position: absolute; bottom: 0;" for="Bottomright-column"><h2>Comments:</h2></label>
+                                        <p style="margin-left:50%;">Insert comments</p>
+                                    </li>
+                                </ul>
 
-                    </div>
+                            </div>
 
-                </div>
+                        </div>
+                        </div>
                 }
             </div>
 

@@ -5,8 +5,9 @@
 	[Image] IMAGE,
 	[SubmittedBy] NVARCHAR(50) NOT NULL,
 	[CostLiter] money NULL,
-	[Date] date NOT NULL,
+	[Date] DATETIME NOT NULL,
 	[Type] NCHAR(10) NOT NULL, 
+	[Show]         BIT			  DEFAULT 1,
     CONSTRAINT [FK_Ingredients_ToTable] FOREIGN KEY ([SubmittedBy]) REFERENCES [dbo].[User]([User])
 )
 

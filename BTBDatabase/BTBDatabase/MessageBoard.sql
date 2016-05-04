@@ -6,6 +6,6 @@
 	[Date] datetime NOT NULL,
 	[Image] IMAGE,
 	[Type] NCHAR(10) NOT NULL, 
-    CONSTRAINT [FK_MessageBoard_ToTable] FOREIGN KEY ([SubmittedBy]) REFERENCES [dbo].[User]([User])
+	[Show]         BIT			  DEFAULT 1
 )
 

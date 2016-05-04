@@ -17,8 +17,7 @@ namespace CIS598PROJECT.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DrinkShot()
         {
-            this.IngrediantRecipes = new HashSet<IngrediantRecipe>();
-            this.UserRatings = new HashSet<UserRating>();
+            this.IngredientRecipes = new HashSet<IngredientRecipe>();
         }
     
         public string Name { get; set; }
@@ -30,11 +29,10 @@ namespace CIS598PROJECT.Models
         public Nullable<decimal> Cost { get; set; }
         public System.DateTime Date { get; set; }
         public string Type { get; set; }
+        public Nullable<bool> Show { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngrediantRecipe> IngrediantRecipes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRating> UserRatings { get; set; }
+        public virtual ICollection<IngredientRecipe> IngredientRecipes { get; set; }
     }
 }

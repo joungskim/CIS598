@@ -14,21 +14,12 @@ namespace CIS598PROJECT.Models
     
     public partial class MessageBoard
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MessageBoard()
-        {
-            this.Replies = new HashSet<Reply>();
-        }
-    
         public int Id { get; set; }
         public string SubmittedBy { get; set; }
         public string Description { get; set; }
         public System.DateTime Date { get; set; }
         public byte[] Image { get; set; }
         public string Type { get; set; }
-    
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reply> Replies { get; set; }
+        public Nullable<bool> Show { get; set; }
     }
 }

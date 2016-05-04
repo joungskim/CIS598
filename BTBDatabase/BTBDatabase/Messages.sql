@@ -7,6 +7,4 @@
 [Image] IMAGE,
 [Date] datetime NOT NULL,
 [Show] INT NOT NULL, 
-    CONSTRAINT [FK_Messages_ToTable] FOREIGN KEY ([FromUser]) REFERENCES [dbo].[User]([User]), 
-    CONSTRAINT [FK_Messages_ToTable_1] FOREIGN KEY ([ToUser]) REFERENCES [dbo].[User]([User])
 )

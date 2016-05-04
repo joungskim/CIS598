@@ -247,3 +247,9 @@ listbox:focus{
 .div-overflow{
         overflow-y: scroll;
 }
+.mail-icon{
+    padding-top: 9px;
+}
+.height-body-home{
+    height: 100%;
+}

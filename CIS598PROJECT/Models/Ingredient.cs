@@ -27,6 +27,7 @@ namespace CIS598PROJECT.Models
         public Nullable<decimal> CostLiter { get; set; }
         public System.DateTime Date { get; set; }
         public string Type { get; set; }
+        public Nullable<bool> Show { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IngredientRecipe> IngredientRecipes { get; set; }

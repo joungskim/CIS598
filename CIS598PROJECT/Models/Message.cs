@@ -21,8 +21,5 @@ namespace CIS598PROJECT.Models
         public byte[] Image { get; set; }
         public System.DateTime Date { get; set; }
         public int Show { get; set; }
-    
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

@@ -6,6 +6,9 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+        <li class="mail-icon">
+            <img src="http://icons.iconarchive.com/icons/creativenerds/wooden-social/32/email-icon.png">
+        </li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>

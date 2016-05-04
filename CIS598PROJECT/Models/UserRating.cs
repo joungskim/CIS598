@@ -20,8 +20,6 @@ namespace CIS598PROJECT.Models
         public int Rating { get; set; }
         public string Description { get; set; }
         public System.DateTime Date { get; set; }
-    
-        public virtual DrinkShot DrinkShot { get; set; }
-        public virtual User User { get; set; }
+        public Nullable<bool> Show { get; set; }
     }
 }
