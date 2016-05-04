@@ -9,6 +9,6 @@ namespace CIS598PROJECT.Models
 {
     public class HomeIndexModel
     {
-
+        public List<DrinkShot> Drinkshot { get; set; }
     }
 }

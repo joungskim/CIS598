@@ -12,12 +12,12 @@ namespace CIS598PROJECT.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingrediant
+    public partial class Ingredient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ingrediant()
+        public Ingredient()
         {
-            this.IngrediantRecipes = new HashSet<IngrediantRecipe>();
+            this.IngredientRecipes = new HashSet<IngredientRecipe>();
         }
     
         public string Name { get; set; }
@@ -29,7 +29,7 @@ namespace CIS598PROJECT.Models
         public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngrediantRecipe> IngrediantRecipes { get; set; }
+        public virtual ICollection<IngredientRecipe> IngredientRecipes { get; set; }
         public virtual User User { get; set; }
     }
 }

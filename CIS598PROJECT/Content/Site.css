@@ -237,3 +237,13 @@ listbox:focus{
     width: 100px;
     height: 30px;
 }
+.search-navbar{
+    padding-right: 0px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+}
+.div-overflow{
+        overflow-y: scroll;
+}

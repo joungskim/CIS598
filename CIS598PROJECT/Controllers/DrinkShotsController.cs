@@ -158,6 +158,7 @@ namespace CIS598PROJECT.Models
         {
             DrinkShot drinkShot = db.DrinkShots.Find(id);
             db.DrinkShots.Remove(drinkShot);
+            List<IngrediantRecipe> recipe = db.IngrediantRecipes.Where(m=>m.DSName.Equals(id)).ToList();
             db.SaveChanges();
             return RedirectToAction("Index");
         }

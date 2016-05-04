@@ -206,6 +206,21 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BTBDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BTBDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BTBDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BTBDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BTBDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BTBDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\BTBModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +253,12 @@
       <DependentUpon>BTBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\IngredientsController.cs" />
+    <Compile Include="Models\Ingredient.cs">
+      <DependentUpon>BTBDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IngredientRecipe.cs">
+      <DependentUpon>BTBDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs">
       <DependentUpon>BTBModels.tt</DependentUpon>
@@ -286,6 +307,23 @@
     </Content>
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
+    <EntityDeploy Include="Models\BTBDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BTBDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BTBDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BTBDB.edmx</DependentUpon>
+      <LastGenOutput>BTBDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BTBDB.edmx.diagram">
+      <DependentUpon>BTBDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\BTBDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BTBDB.edmx</DependentUpon>
+      <LastGenOutput>BTBDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
