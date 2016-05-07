@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CIS598PROJECT.Models.DrinkShot>
+@using Microsoft.AspNet.Identity
+@foreach (var item in Model)
+{
+    
+    <div class="row">
+        <div class="collapse navbar-collapse col-md-3" id="Recipe-1">
+            <div class="panel panel-heading nav-fade" style="width:200px">
+                <a class="panel panel-title" data-toggle="collapse" href="#@item.Name.ToString().Replace(" ", string.Empty)-1" aria-expanded="false" aria-controls="@item.Name.ToString().Replace(" ", string.Empty)">
+                    Instructions 
+                </a>
+            </div>
+            <div id="@item.Name.ToString().Replace(" ", string.Empty)-1" class="panel-collapse collapse" style="max-width:200px; padding-left: 15px;">
+                @Html.DisplayFor(modelItem => item.Instructions)
+
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse col-md-4 middle-column" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
+            <div class="panel panel-heading nav-fade" style="width:200px">
+
+                <a class="panel panel-title" data-toggle="collapse" href="#@item.Name.ToString().Replace(" ", string.Empty)-2" aria-expanded="false" aria-controls="panel-drink-name">@item.Name.ToString()</a>
+
+            </div>
+            <div id="@item.Name.ToString().Replace(" ", string.Empty)-2" class="panel-collapse collapse" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
+                <img class="apple" src="/DrinkShots/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
+            </div>
+        </div>
+        <div class="collapse navbar-collapse col-md-3 sidebar-outer middle-column" id="Ingredients-1">
+            <div class="panel panel-heading nav-fade" style="width:200px">
+                <a class="panel panel-title" data-toggle="collapse" href="#@item.Name.ToString().Replace(" ", string.Empty)-3" aria-expanded="false">Ingredients</a>
+            </div>
+            <div id="@item.Name.ToString().Replace(" ", string.Empty)-3" class="panel-collapse collapse" style="max-width:200px">
+
+                @foreach (var d in item.IngredientRecipes.Where(d => d.DSName == item.Name))
+                {
+                    <div class="row">
+                        <a class="home-ingredients" href="@Href("/Ingredients/Details/" + @d.IngredientName)">@d.IngredientName</a>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+        <div class="col-md-1">
+            <div class="center-div" id="@item.Name.ToString().Replace(" ", string.Empty)-cost">
+                <span class="glyphicon glyphicon-globe nav-fade" data-toggle="tooltip" title="@String.Format("Estimated ALCOHOL/shot Cost: {0:C}", item.Cost)"></span>
+            </div>
+        </div>
+    </div>
+}

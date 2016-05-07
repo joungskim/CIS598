@@ -5,18 +5,13 @@
     
 }
 
-    <div class="container-fluid, background">
+    <div class="container-fluid, background-home-index">
 
     <div class="row">
-        <div class="col-md-8 navbar-default">
+        <div class="col-md-8 navbar-default padding-remove-right to-transparent">
             <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                    </button> <a style="color:white;" class="navbar-brand" href="#">Search</a>
-                </div>
-                <div style="background-size: cover; background-image: url(http://a.abcnews.go.com/images/Health/gty_drinks_ll_1204113_wmain.jpg);" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="float-left">
+                <div style="background-size: cover; background-image: url(http://a.abcnews.go.com/images/Health/gty_drinks_ll_1204113_wmain.jpg);" class="collapse navbar-collapse row search-bar" id="bs-example-navbar-collapse-1">
+                    <div class="col-md-3">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
@@ -47,110 +42,35 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="float-left">
-                        <form class="navbar-form navbar-default" role="search">
-                            <div class="form-group float-left">
-                                <input type="text" class="form-control" />
-                            </div>
-                            <div class="float-left">
-                            <button type="submit" class="btn btn-default search-btn">
-                                Search
-                            </button>
-                            </div>
-                        </form>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <form class="navbar-form navbar-default" role="search">
+                                <div class="form-group col-md-8" style="width:200px">
+                                    <input type="text" class="form-control" />
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="m-button">
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
 
             </nav>
             <!---->
-
-            <div class="row col-md-12 div-overflow">
-                @foreach (var item in Model)
-                {
-                    <div class="height-body-home">
-                        <div class="collapse navbar-collapse col-md-3" id="Recipe-1">
-                            <div class="panel panel-heading" style="width:200px">
-                                <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe" aria-expanded="false" aria-controls="panel-reipe">Instructions</a>
-                            </div>
-                            <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
-
-                                <ul>
-
-                                    <li>
-                                        <label for="Leftt-column">Instructions:</label>
-                                        <p></p>@Html.DisplayFor(modelItem => item.Instructions)<br /><br /><br /><br /><br />
-                                    </li>
-                                    <li>
-                                        <label style="margin-right:-25%; position: absolute; bottom: 0;" for="Bottomleft-column"><h2>Rating:</h2></label>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-
-               
-                        <div class="collapse navbar-collapse col-md-4" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
-                            <div class="panel panel-heading" style="width:200px">
-
-                                <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name" aria-expanded="false" aria-controls="panel-drink-name">Washinton Apple</a>
-
-                            </div>
-                            <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
-                                <ul>
-                                    <li>
-                                        <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="collapse navbar-collapse col-md-3 sidebar-outer" id="Ingredients-1">
-                            <div class="panel panel-heading" style="width:200px">
-                                <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingredients" aria-expanded="false">Ingredients</a>
-                            </div>
-                            <div id="panel-Ingredients" class="panel-collapse collapse in sidebar" style="max-width:350px">
-
-                                <ul>
-                                    <li>
-                                        <label for="Right-column"><h2>Ingredients:</h2></label>
-                                        <p style="margin-left:30%;">Insert ingredients</p>
-                                    </li>
-                                    <li style="margin-left:30%;">
-
-                                        Crown
-                                    </li>
-                                    <li style="margin-left:30%;">
-                                        Peach
-                                    </li>
-                                    <li style="margin-left:30%;">
-                                        Cranberry Juice
-                                    </li>
-                                    <li style="margin-left:35%;">
-                                        @Html.ActionLink("Full Ingredients List", "Index", "Ingredients")
-                                    </li>
-                                    <li>
-                                        <label style="margin-left:50%;position: absolute; bottom: 0;" for="Bottomright-column"><h2>Comments:</h2></label>
-                                        <p style="margin-left:50%;">Insert comments</p>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-                        </div>
-                }
+            <div class="row col-md-12 scroll-bar height-body-home" id="style-2">
+                @Html.Partial("_bodyDrinksPartial")
             </div>
+
+
 
             <!---->
-            <div class="row">
-                <div class="col-md-12">
-                </div>
-            </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 padding-remove-left">
             <div class="row">
                 <div class="col-md-12">
                     <div class="carousel slide" id="carousel-162483">
@@ -265,59 +185,57 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-981890" href="#panel-element-470760">Some Category here</a>
-                            </div>
-                            <div id="panel-element-470760" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Anim pariatur cliche...
-                                </div>
-                            </div>
+                        <div class="wrapper">
+                            <input type="checkbox">
+                            <label class="collapse-button"><i class='icon-off'></i></label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-4">
-            <h2>
-                Latest Comments
-            </h2>
-            <p>
-                Jerry - Check out my new rendition of Sex With an Aligator!
-                <img style="width:150px;height:150px;" src="https://doodleordie.s3.amazonaws.com/i/5htt1bsm3/1__8GIT4MVQg.png">
-            <p>
-                <a class="btn" href="#">Read More »</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>
-                Bartending Horror Stories
-            </h2>
-            <p>
-                Julie - Last night started like any other night...
-                <img style="width:150px;height:150px;" src="http://vignette3.wikia.nocookie.net/courage/images/a/a1/Scared_Courage.jpg/revision/latest?cb=20110610081904" />
-            <p>
-                <a class="btn" href="#">Read More »</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>
-                Bartender Do's and Dont's
-            </h2>
-            <p>
-                1. Always tip your bartender...
-
-            </p>
-            <img style="width:200px;height:150px;" src="http://www.naturesafariindia.com/images/Do-and-dont.png">
-            <a class="btn" href="#">Read More »</a>
-            </p>
 
         </div>
 
     </div>
-
 </div>
+            @*<div class="row">
+                <div class="col-md-4">
+                    <h2>
+                        Latest Comments
+                    </h2>
+                    <p>
+                        Jerry - Check out my new rendition of Sex With an Aligator!
+                        <img style="width:150px;height:150px;" src="https://doodleordie.s3.amazonaws.com/i/5htt1bsm3/1__8GIT4MVQg.png">
+                    <p>
+                        <a class="btn" href="#">Read More »</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>
+                        Bartending Horror Stories
+                    </h2>
+                    <p>
+                        Julie - Last night started like any other night...
+                        <img style="width:150px;height:150px;" src="http://vignette3.wikia.nocookie.net/courage/images/a/a1/Scared_Courage.jpg/revision/latest?cb=20110610081904" />
+                    <p>
+                        <a class="btn" href="#">Read More »</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>
+                        Bartender Do's and Dont's
+                    </h2>
+                    <p>
+                        1. Always tip your bartender...
+
+                    </p>
+                    <img style="width:200px;height:150px;" src="http://www.naturesafariindia.com/images/Do-and-dont.png">
+                    <a class="btn" href="#">Read More »</a>
+                    </p>
+
+                </div>*@
+
+            @*</div>*@

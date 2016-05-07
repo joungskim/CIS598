@@ -57,7 +57,7 @@ namespace CIS598PROJECT.Models
                 ingredients = ingredients.Where(s => s.Name.Contains(id) ||
                                                 s.Type.Contains(id) ||
                                                 s.SubmittedBy.Contains(id) ||
-                                                s.Description.Contains(id) ||
+                                                s.Description.Contains(id) &&
                                                 s.Show != false);
 
             }

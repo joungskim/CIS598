@@ -20,6 +20,7 @@ namespace CIS598PROJECT.Controllers
         {
             var HIModel = new HomeIndexModel();
             var DrinkShots = (from m in db.DrinkShots
+                                 where m.Show != false
                                  select m).ToList();
             //.IngredientList = (from m in db.Ingredients
             //                        orderby m.Name
@@ -38,6 +39,13 @@ namespace CIS598PROJECT.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string id)
+        {
+            ViewBag.Message = "Search Results";
+            var drinkSearch = new List<DrinkShot>();
             return View();
         }
     }

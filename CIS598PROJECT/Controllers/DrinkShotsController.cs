@@ -185,14 +185,19 @@ namespace CIS598PROJECT.Models
         {
             
             decimal cost = 0;
+            decimal averageTax = System.Convert.ToDecimal(.09);
             for (int i = 0; i < Ingredients.Count(); i++)
             {
                 decimal temp = 0;
                 var c = db.Ingredients.Find(Ingredients[i]);
-                if (c.CostLiter.HasValue) temp = c.CostLiter.Value;
+
+                if(!c.CostLiter.HasValue) return cost;
+
+                temp = c.CostLiter.Value;
                 temp = decimal.Divide((temp * System.Convert.ToDecimal(1.25)), System.Convert.ToDecimal(33.81 * Ingredients.Count()));
                 cost += temp;
             }
+            cost = cost * averageTax + cost;
             return cost;
         }
         protected override void Dispose(bool disposing)
