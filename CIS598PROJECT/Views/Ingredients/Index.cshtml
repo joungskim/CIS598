@@ -10,17 +10,14 @@
         @Html.ActionLink("Create New", "Create")
     </div>
     <div class="search-tab">
-        <div class="float-left">
-            Search Drinks/Shots:
-        </div>
         @using (Html.BeginForm("Index", "Ingredients", FormMethod.Post))
         {
-            <div class="float-left">
+            <div class="float-left search-tab-inline">
 
                 @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
 
             </div>
-            <div class="float-left">
+            <div class="float-left search-tab-inline">
                 <input type="submit" value="Search" class="btn-warning search-btn" />
             </div>
         }
@@ -51,7 +48,7 @@
         <th>
             @Html.DisplayName("Submitted By")
         </th>
-
+        <th></th>
         </thead>
     </tr>
     @foreach (var item in Model)
@@ -90,3 +87,5 @@
     }
 
 </table>
+
+

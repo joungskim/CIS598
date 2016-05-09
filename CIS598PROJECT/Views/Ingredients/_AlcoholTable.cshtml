@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CIS598PROJECT.Models.Ingredient>
+
+<table class="zui-table zui-table-rounded">
+    <tr>
+    <thead>
+    <th>
+        @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Description)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Image)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CostLiter)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Date)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Type)
+    </th>
+    <th>
+        @Html.DisplayName("Submitted By")
+    </th>
+    <th></th>
+    </thead>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @*<img src="@Url.Action("RetrieveImage", "Ingredients", new { name = item.Name })" alt="No Image Uploaded" height=100 width=200 />*@
+                <img class="thumbnail-index" src="/Ingredients/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.CostLiter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.User1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Name }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Name }) |
+            </td>
+        </tr>
+
+    }
+
+</table>

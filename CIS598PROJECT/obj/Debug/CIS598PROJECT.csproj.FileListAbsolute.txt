@@ -205,3 +205,7 @@ C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.dll
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.pdb
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.csprojResolveAssemblyReference.cache
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

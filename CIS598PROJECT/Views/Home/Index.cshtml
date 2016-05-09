@@ -121,86 +121,80 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel-group" id="panel-298950">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-298950" href="#panel-element-564475">Recommended Shots For You</a>
-                            </div>
-                            <div id="panel-element-564475" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    Washington Apple
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-298950" href="#panel-element-606596">Recommended Drinks For You</a>
-                            </div>
-                            <div id="panel-element-606596" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Cosmopolitan
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel-group" id="panel-868639">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-868639" href="#panel-element-172298">Top Rated</a>
-                            </div>
-                            <div id="panel-element-172298" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    Moscow Mule
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-868639" href="#panel-element-788968">Featured</a>
-                            </div>
-                            <div id="panel-element-788968" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Anim pariatur cliche...
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel-group" id="panel-981890">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <a class="panel-title" data-toggle="collapse" data-parent="#panel-981890" href="#panel-element-340147">New Drinks</a>
-                            </div>
-                            <div id="panel-element-340147" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    Midwest Long Island
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wrapper">
-                            <input type="checkbox">
-                            <label class="collapse-button"><i class='icon-off'></i></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+            </div>    
     </div>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row chat-container-big">
+        <div class="col-md-4 chat-container">
+            <div class="row chat-title">
+                BTB Chat-Hub
+            </div>
+            <div class="scroll-bar row chat-discussion wordwrap" id="style-3">
+                <ul id="discussion" class="messages-style"></ul>
+            </div>
+            <div class="row">
+                @if (Request.IsAuthenticated)
+                {
+                    <textarea type="text" id="message" class="chat-textbox" placeholder="Type Message Here..."> </textarea>
+                }
+                else
+                {
+                    <textarea type="text" id="message" class="chat-textbox" readonly>You must log in to chat... </textarea>
+                }
+                
+            </div>
+            <input type="hidden" id="sendmessage" value="Send" />
+            <input type="hidden" id="displayname" />
+            @section scripts {
+                <!--Script references. -->
+                <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+                <!--Reference the SignalR library. -->
+                <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+                <!--Reference the autogenerated SignalR hub script. -->
+                <script src="~/signalr/hubs"></script>
+                <!--SignalR script to update the chat page and send messages.-->
+                <script>
+                    $("#message").keyup(function (event) {
+                        if (event.keyCode == 13) {
+                            $("#sendmessage").click();
+                        }
+                    });
+                    $(function () {
+                        // Reference the auto-generated proxy for the hub.
+                        var chat = $.connection.chatHub;
+                        // Create a function that the hub can call back to display messages.
 
+                        chat.client.addNewMessageToPage = function (name, message) {
+                            // Add the message to the page.
+                            $('#discussion').append('<li><a href="http://www.facebook.com" target="_blank">' + htmlEncode(name)
+                                + '</a>' + ': ' + htmlEncode(message) + '</li>');
+                        };
+                        // Get the user name and store it to prepend to messages.
+                        $('#displayname').val('@User.Identity.Name');
+                        // Set initial focus to message input box.
+                        // $('#message').focus();
+                        // Start the connection.
+                        $.connection.hub.start().done(function () {
+                            $('#sendmessage').click(function () {
+                                // Call the Send method on the hub.
+                                chat.server.send($('#displayname').val(), $('#message').val());
+                                // Clear text box and reset focus for next comment.
+                                $('#message').val('').focus();
+                            });
+                        });
+                    });
+                    // This optional function html-encodes messages for display in the page.
+                    function htmlEncode(value) {
+                        var encodedValue = $('<div />').text(value).html();
+                        return encodedValue;
+                    }
+            </script>
+            }
         </div>
-
     </div>
 </div>
+        </div>
+
             @*<div class="row">
                 <div class="col-md-4">
                     <h2>

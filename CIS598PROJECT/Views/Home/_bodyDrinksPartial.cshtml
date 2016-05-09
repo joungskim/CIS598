@@ -12,11 +12,14 @@
             </div>
             <div id="@item.Name.ToString().Replace(" ", string.Empty)-1" class="panel-collapse collapse" style="max-width:200px; padding-left: 15px;">
                 @Html.DisplayFor(modelItem => item.Instructions)
-
+                <div class="bottom" id="@item.Name.ToString().Replace(" ", string.Empty)-cost">
+                    <span class="glyphicon glyphicon-globe nav-fade" data-toggle="tooltip" title="@String.Format("Estimated ALCOHOL/shot Cost: {0:C}", item.Cost)"></span>
+                </div>
             </div>
+
         </div>
 
-        <div class="collapse navbar-collapse col-md-4 middle-column" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
+        <div class="collapse navbar-collapse col-md-3 middle-column" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
             <div class="panel panel-heading nav-fade" style="width:200px">
 
                 <a class="panel panel-title" data-toggle="collapse" href="#@item.Name.ToString().Replace(" ", string.Empty)-2" aria-expanded="false" aria-controls="panel-drink-name">@item.Name.ToString()</a>
@@ -24,7 +27,11 @@
             </div>
             <div id="@item.Name.ToString().Replace(" ", string.Empty)-2" class="panel-collapse collapse" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
                 <img class="apple" src="/DrinkShots/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
+                <div class="bottom" id="@item.Name.ToString().Replace(" ", string.Empty)-cost">
+                    <span class="glyphicon glyphicon-globe nav-fade" data-toggle="tooltip" title="@String.Format("Estimated ALCOHOL/shot Cost: {0:C}", item.Cost)"></span>
+                </div>
             </div>
+
         </div>
         <div class="collapse navbar-collapse col-md-3 sidebar-outer middle-column" id="Ingredients-1">
             <div class="panel panel-heading nav-fade" style="width:200px">
@@ -38,14 +45,9 @@
                         <a class="home-ingredients" href="@Href("/Ingredients/Details/" + @d.IngredientName)">@d.IngredientName</a>
                     </div>
                 }
-
-
-            </div>
-
-        </div>
-        <div class="col-md-1">
-            <div class="center-div" id="@item.Name.ToString().Replace(" ", string.Empty)-cost">
-                <span class="glyphicon glyphicon-globe nav-fade" data-toggle="tooltip" title="@String.Format("Estimated ALCOHOL/shot Cost: {0:C}", item.Cost)"></span>
+                <div class="bottom" id="@item.Name.ToString().Replace(" ", string.Empty)-cost">
+                    <span class="glyphicon glyphicon-globe nav-fade" data-toggle="tooltip" title="@String.Format("Estimated ALCOHOL/shot Cost: {0:C}", item.Cost)"></span>
+                </div>
             </div>
         </div>
     </div>

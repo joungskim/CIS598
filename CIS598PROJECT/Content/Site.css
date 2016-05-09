@@ -78,12 +78,14 @@ a.panel{
     linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ),
-        
+    ),    
     url(http://afssolutions.com.au/wp-content/uploads/2015/05/AFS-Top-Wooden-Table-With-Bar-Blur-86946938.jpg);
+    border-color: darkgoldenrod;
+    border-style: inset;
     background-size:contain;
     height: 790px;
     max-height: 790px;
+    margin-top: 15px;
 }
 .col-md-4,.col-md-8,.col-md-12,.panel-heading,.panel,.row,.button,.panel-title,.panel panel-default,.panel-default,.panel-group,.row,.panel-collapse, .panel-body,.carousel slide,.panel-title collapsed{
     background-color:transparent;
@@ -95,6 +97,8 @@ a.panel{
 .carousel{
     border:inset;
     border-color:darkgoldenrod;
+    border-right: none;
+    border-top:none;
 }
 textarea{
     border-radius: 25px;
@@ -228,6 +232,10 @@ listbox:focus{
     display:inline;
     max-height:50px;
     font: normal 15px Arial, sans-serif;
+    white-space:nowrap;
+}
+.search-tab-inline{
+        display:inline-block;
 }
 
 .padding-top-table{
@@ -389,3 +397,83 @@ listbox:focus{
 .pic:hover .txt {
         display: block;
     }
+
+.chat-textbox{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100px;
+    width: 335px;
+    margin-left: 20px;
+    margin-top: 10px;
+    max-width: 335px;
+    
+}
+.chat-container{
+    width: 373px;
+    height: 533px;
+    border-color: darkgoldenrod;
+    border-style: inset;
+    border-bottom: none;
+    border-right: none;
+    max-height: 538px;
+    padding-right: 20px;
+    border-top:none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.chat-discussion{
+    height: 330px;
+    width: 325px;
+    max-width: 325px;
+    max-height: 340px;
+    border: 1px solid white;
+    border-radius: 0px 0px 0px 20px;
+    margin-left: 10px; 
+    margin-top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: 15px; 
+}
+.wordwrap { 
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
+}
+.chat-container-big{
+    padding-left: 15px;
+    padding-right: 20px;
+}
+.chat-title{
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width:325px;
+    height: 50px;
+    padding: 12px 30px;
+    border: 1px solid white;
+    border-radius: 20px 20px 0px 0px;
+}
+#style-3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: transparent;
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #333;
+    opacity: 0.4;
+}
+.messages-style{
+    background-color: rgba(204, 102, 0, 0.2);
+    padding-left: 15px;
+    border-radius: 10px;
+}

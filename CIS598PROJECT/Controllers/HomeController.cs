@@ -48,5 +48,10 @@ namespace CIS598PROJECT.Controllers
             var drinkSearch = new List<DrinkShot>();
             return View();
         }
+
+        public ActionResult Chat()
+        {
+            return View("_chat");
+        }
     }
 }

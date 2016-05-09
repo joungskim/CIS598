@@ -12,17 +12,14 @@
         @Html.ActionLink("Create New", "Create")
     </div>
     <div class="search-tab">
-        <div class="float-left">
-            Search Drinks/Shots:
-        </div>
         @using (Html.BeginForm("Index", "DrinkShots", FormMethod.Post))
         {
-        <div class="float-left">
+        <div class="float-left search-tab-inline">
             
                 @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
             
         </div>
-        <div class="float-left">
+        <div class="float-left search-tab-inline">
             <input type="submit" value="Search" class="btn-warning search-btn" />
         </div>
             }
