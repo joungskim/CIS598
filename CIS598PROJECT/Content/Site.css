@@ -87,7 +87,7 @@ a.panel{
     max-height: 790px;
     margin-top: 15px;
 }
-.col-md-4,.col-md-8,.col-md-12,.panel-heading,.panel,.row,.button,.panel-title,.panel panel-default,.panel-default,.panel-group,.row,.panel-collapse, .panel-body,.carousel slide,.panel-title collapsed{
+.panel-heading,.panel,.panel-title,.panel panel-default,.panel-default,.panel-group,.panel-collapse, .panel-body,.carousel slide,.panel-title collapsed{
     background-color:transparent;
     color:white;
    
@@ -263,6 +263,7 @@ listbox:focus{
     height: 100%;
     max-height:700px;
     text-align: center;
+    width: 800px;
 }
 .padding-remove-right{
     padding-right:0
@@ -441,6 +442,8 @@ listbox:focus{
 .chat-container-big{
     padding-left: 15px;
     padding-right: 20px;
+    margin-right: -5px;
+    float: right;
 }
 .chat-title{
     margin-top: 20px;
@@ -477,3 +480,20 @@ listbox:focus{
     padding-left: 15px;
     border-radius: 10px;
 }
+ .thumbnail-user{
+     margin-left: 5px;
+     margin-top: -5px;
+     margin-right: -5px;
+     border-radius: 5px;
+     display: block;
+     width: 25px;
+     height: 30px;
+     box-shadow: #957030, 10px 10px inset;
+ }
+
+ .thumbnail-mailbox{
+     margin-top: -20px;
+ }
+ /*CSS Style for messages*/
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,600,700,800,400);
+

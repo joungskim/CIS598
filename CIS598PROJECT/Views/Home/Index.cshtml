@@ -17,7 +17,7 @@
                                 <a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#">All Shots</a>
+                                        @Html.ActionLink("All Shots", "Index", "Search", new { id = "shot" }, null)
                                     </li>
                                     <li>
                                         <a href="#">All Drinks</a>
@@ -44,16 +44,17 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <form class="navbar-form navbar-default" role="search">
-                                <div class="form-group col-md-8" style="width:200px">
-                                    <input type="text" class="form-control" />
+                            @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                            {
+                                <div class="float-left search-tab-inline">
+
+                                    @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
+
                                 </div>
-                                <div class="col-md-3">
-                                    <button type="submit" class="m-button">
-                                        Search
-                                    </button>
+                                <div class="float-left search-tab-inline">
+                                    <input type="submit" value="Search" class="btn-warning search-btn" />
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,7 @@
     <div class="row chat-container-big">
         <div class="col-md-4 chat-container">
             <div class="row chat-title">
-                BTB Chat-Hub
+                @Html.ActionLink("BTB Chat-Hub", "ChatLog")
             </div>
             <div class="scroll-bar row chat-discussion wordwrap" id="style-3">
                 <ul id="discussion" class="messages-style"></ul>
@@ -166,8 +167,8 @@
 
                         chat.client.addNewMessageToPage = function (name, message) {
                             // Add the message to the page.
-                            $('#discussion').append('<li><a href="http://www.facebook.com" target="_blank">' + htmlEncode(name)
-                                + '</a>' + ': ' + htmlEncode(message) + '</li>');
+                            $('#discussion').append('<li>' + htmlEncode(name)
+                                + ': ' + htmlEncode(message) + '</li>');
                         };
                         // Get the user name and store it to prepend to messages.
                         $('#displayname').val('@User.Identity.Name');
@@ -194,42 +195,3 @@
     </div>
 </div>
         </div>
-
-            @*<div class="row">
-                <div class="col-md-4">
-                    <h2>
-                        Latest Comments
-                    </h2>
-                    <p>
-                        Jerry - Check out my new rendition of Sex With an Aligator!
-                        <img style="width:150px;height:150px;" src="https://doodleordie.s3.amazonaws.com/i/5htt1bsm3/1__8GIT4MVQg.png">
-                    <p>
-                        <a class="btn" href="#">Read More »</a>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>
-                        Bartending Horror Stories
-                    </h2>
-                    <p>
-                        Julie - Last night started like any other night...
-                        <img style="width:150px;height:150px;" src="http://vignette3.wikia.nocookie.net/courage/images/a/a1/Scared_Courage.jpg/revision/latest?cb=20110610081904" />
-                    <p>
-                        <a class="btn" href="#">Read More »</a>
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>
-                        Bartender Do's and Dont's
-                    </h2>
-                    <p>
-                        1. Always tip your bartender...
-
-                    </p>
-                    <img style="width:200px;height:150px;" src="http://www.naturesafariindia.com/images/Do-and-dont.png">
-                    <a class="btn" href="#">Read More »</a>
-                    </p>
-
-                </div>*@
-
-            @*</div>*@

@@ -32,6 +32,7 @@ namespace CIS598PROJECT.Models
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> Show { get; set; }
         public Nullable<bool> Admin { get; set; }
+        public Nullable<System.DateTime> Birthdate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DrinkShot> DrinkShots { get; set; }

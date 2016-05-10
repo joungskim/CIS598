@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using CIS598PROJECT.Controllers
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,10 +8,13 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li class="mail-icon">
-            <img src="http://icons.iconarchive.com/icons/creativenerds/wooden-social/32/email-icon.png">
+            <a href="~/Messages"><img class="thumbnail-mailbox"src="http://icons.iconarchive.com/icons/creativenerds/wooden-social/32/email-icon.png"></a>
         </li>
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <a href="~/Users/Details/@User.Identity.GetUserName()"><img class="thumbnail-user" src="~/Users/RetrieveImage/@User.Identity.GetUserName()" i alt="No Image Uploaded" /></a>
+</li>
+        <li>
+            @Html.ActionLink(User.Identity.GetUserName() + "!", "Details/" + @User.Identity.GetUserName(), "Users", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

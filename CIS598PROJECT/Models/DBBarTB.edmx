@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BTBDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BTBDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -22,7 +22,7 @@
           <Property Name="ViewCount" Type="int" />
           <Property Name="Image" Type="image" />
           <Property Name="Cost" Type="money" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Show" Type="bit" />
         </EntityType>
@@ -100,6 +100,7 @@
           <Property Name="Date" Type="date" />
           <Property Name="Show" Type="bit" />
           <Property Name="Admin" Type="bit" />
+          <Property Name="Birthdate" Type="date" />
         </EntityType>
         <EntityType Name="UserRating">
           <Key>
@@ -190,8 +191,7 @@
             <End Role="Ingredients" EntitySet="Ingredients" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BTBDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -212,7 +212,7 @@
           <Property Name="ViewCount" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Show" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_DrinkShot_ToTable" FromRole="DrinkShot" ToRole="User" />
@@ -298,6 +298,7 @@
           <Property Name="Admin" Type="Boolean" />
           <NavigationProperty Name="DrinkShots" Relationship="Self.FK_DrinkShot_ToTable" FromRole="User" ToRole="DrinkShot" />
           <NavigationProperty Name="Ingredients" Relationship="Self.FK_Ingredients_ToTable" FromRole="User" ToRole="Ingredients" />
+          <Property Name="Birthdate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="UserRating">
           <Key>
@@ -484,6 +485,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BTBDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="User1" ColumnName="User" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -491,7 +494,6 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Show" ColumnName="Show" />
                 <ScalarProperty Name="Admin" ColumnName="Admin" />

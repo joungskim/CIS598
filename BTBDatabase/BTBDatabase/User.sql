@@ -7,8 +7,9 @@
     [Age] INT NULL, 
     [Sex] NCHAR(1) NULL, 
 	[State] NCHAR(2) NOT NULL,
-    [Birthday] INT NULL, 
-    [Date] date NULL, 
+    [Birthday] int NULL, 
+    [Date] Date NULL, 
 	[Show]         BIT			  DEFAULT 1,
-	[Admin] Bit Default 1
+	[Admin] Bit Default 1,
+	[Birthdate] Date Null
 )

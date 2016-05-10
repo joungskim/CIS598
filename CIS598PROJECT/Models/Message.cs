@@ -6,7 +6,10 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 namespace CIS598PROJECT.Models
 {
     using System;
@@ -17,9 +20,14 @@ namespace CIS598PROJECT.Models
         public int ID { get; set; }
         public string FromUser { get; set; }
         public string ToUser { get; set; }
+        [Required]
+        [StringLength(10000, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [Display(Name = "Message")]
         public string Message1 { get; set; }
         public byte[] Image { get; set; }
         public System.DateTime Date { get; set; }
         public int Show { get; set; }
+        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<string> ToUsers { get; set; }
     }
 }
