@@ -7,8 +7,9 @@
 	[ViewCount] int,
 	[Image] image,
 	[Cost] money,
-	[Date] DATETIME2 NOT NULL,
+	[Date] Date NOT NULL,
 	[Type] nchar(10) NOT NULL, 
+	[Show]         BIT			  DEFAULT 1,
     CONSTRAINT [FK_DrinkShot_ToTable] FOREIGN KEY ([SubmittedBy]) REFERENCES [dbo].[User]([User]) ON DELETE CASCADE
 )
 

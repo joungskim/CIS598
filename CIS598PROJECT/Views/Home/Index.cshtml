@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<CIS598PROJECT.Models.DrinkShot>
+@{
     ViewBag.Title = "Home Page";
     <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
     
@@ -10,97 +11,103 @@
         <div class="col-md-8 navbar-default">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
-
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                    </button> <a style="color:white;" class="navbar-brand" href="#">Search for a Drink or Shot</a>
+                    </button> <a style="color:white;" class="navbar-brand" href="#">Search</a>
                 </div>
-
                 <div style="background-size: cover; background-image: url(http://a.abcnews.go.com/images/Health/gty_drinks_ll_1204113_wmain.jpg);" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">All Shots</a>
-                                </li>
-                                <li>
-                                    <a href="#">All Drinks</a>
-                                </li>
-                                <li>
-                                    <a href="#">Popular</a>
-                                </li>
-                                <li>
-                                    <a href="#">Top Rated</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Drink Type Categories</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Create a Drink or Shot</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" />
-                        </div>
-                        <button type="submit" class="btn btn-default">
-                            Search
-                        </button>
-                    </form>
-
+                    <div class="float-left">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">Category<strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">All Shots</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">All Drinks</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Popular</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Top Rated</a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="#">Drink Type Categories</a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="#">Create a Drink or Shot</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="float-left">
+                        <form class="navbar-form navbar-default" role="search">
+                            <div class="form-group float-left">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <div class="float-left">
+                            <button type="submit" class="btn btn-default search-btn">
+                                Search
+                            </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
 
             </nav>
-            <div class="row col-md-12">
-                <div class="collapse navbar-collapse col-md-4" id="Recipe-1">
+            <!---->
+
+            <div class="row col-md-12 div-overflow">
+                @foreach (var item in Model)
+                {
+                <div class="collapse navbar-collapse col-md-3" id="Recipe-1">
                     <div class="panel panel-heading" style="width:200px">
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe">Instructions</a>
+                        <a class="panel panel-title" data-toggle="collapse" href="#panel-recipe" aria-expanded="false" aria-controls="panel-reipe">Instructions</a>
                     </div>
                     <div id="panel-recipe" class="panel-collapse collapse in sidebar" style="max-width:200px">
 
                         <ul>
-                            <li>
-                            <li>
-                                <label for="Leftt-column"><h2>Instructions:</h2></label>
-                                <p>Insert instructions</p><br /><br /><br /><br /><br />
-                            </li>
 
+                            <li>
+                                <label for="Leftt-column">Instructions:</label>
+                                <p></p>@Html.DisplayFor(modelItem => item.Instructions)<br /><br /><br /><br /><br />
+                            </li>
+                            <li>
+                                <label style="margin-right:-25%; position: absolute; bottom: 0;" for="Bottomleft-column"><h2>Rating:</h2></label>
+                            </li>
                         </ul>
 
                     </div>
-                    <li>
-                        <label style="margin-right:-25%;" for="Bottomleft-column"><h2>Rating:</h2></label>
-                        <p>Insert ratings</p>
-                    </li>
                 </div>
 
-                <!---->
-                <div class="collapse navbar-collapse col-sm-4" id="drink-name-1">
+               
+                <div class="collapse navbar-collapse col-md-4" id="drink-name-1" aria-expanded="false" aria-controls="drink-name-1">
                     <div class="panel panel-heading" style="width:200px">
 
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name">Washinton Apple</a>
+                        <a class="panel panel-title" data-toggle="collapse" href="#panel-drink-name" aria-expanded="false" aria-controls="panel-drink-name">Washinton Apple</a>
 
                     </div>
-                    <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px">
+                    <div id="panel-drink-name" class="panel-collapse collapse in sidebar" style="max-width:200px" aria-expanded="false" aria-controls="panel-drink-name">
                         <ul>
-
-                            <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
+                            <li>
+                                <img class="apple" src="http://liquor.s3.amazonaws.com/wp-content/uploads/2014/05/recipe-boulevardier.jpg" />
                             </li>
 
 
                         </ul>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse col-sm-4 sidebar-outer" id="Ingrediants-1">
+                <div class="collapse navbar-collapse col-md-3 sidebar-outer" id="Ingrediants-1">
                     <div class="panel panel-heading" style="width:200px">
-                        <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingrediants">Ingredients</a>
+                        <a class="panel panel-title" data-toggle="collapse" href="#panel-Ingrediants" aria-expanded="false">Ingredients</a>
                     </div>
                     <div id="panel-Ingrediants" class="panel-collapse collapse in sidebar" style="max-width:350px">
 
@@ -122,17 +129,19 @@
                             <li style="margin-left:35%;">
                                 @Html.ActionLink("Full Ingredients List", "Index", "Ingredients")
                             </li>
-
+                            <li>
+                                <label style="margin-left:50%;position: absolute; bottom: 0;" for="Bottomright-column"><h2>Comments:</h2></label>
+                                <p style="margin-left:50%;">Insert comments</p>
+                            </li>
                         </ul>
 
                     </div>
-                    <li>
-                        <label style="margin-left:50%;" for="Bottomright-column"><h2>Comments:</h2></label>
-                        <p style="margin-left:50%;">Insert comments</p>
-                    </li>
-                </div>
 
+                </div>
+                }
             </div>
+
+            <!---->
             <div class="row">
                 <div class="col-md-12">
                 </div>

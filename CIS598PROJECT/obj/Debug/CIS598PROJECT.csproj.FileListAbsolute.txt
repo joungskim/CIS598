@@ -199,9 +199,9 @@ C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Micro
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.csprojResolveAssemblyReference.cache
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.InitialCreate.resources
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.Migrations.Initial.resources
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.csproj.GenerateResource.Cache
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.dll
 C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.pdb
+C:\Users\JR\Documents\Visual Studio 2013\Projects\CIS598\CIS598PROJECT\obj\Debug\CIS598PROJECT.csprojResolveAssemblyReference.cache

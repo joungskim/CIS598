@@ -24,6 +24,44 @@ namespace CIS598PROJECT.Models
             return View(ingrediants.ToList());
         }
 
+        public byte[] GetImageFromDataBase(string name)
+        {
+            byte[] cover = null;
+            var q = from temp in db.Ingrediants where temp.Name.Equals(name) select temp.Image;
+            try
+            {
+                cover = q.First();
+            }
+            catch
+            {
+
+            }
+            return cover;
+        }
+        /// <summary>
+        /// Search for Ingredients index
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Index(string id)
+        {
+            var ingredients = from m in db.Ingrediants
+                              select m;
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                ingredients = ingredients.Where(s => s.Name.Contains(id) ||
+                                                s.Type.Contains(id) ||
+                                                s.SubmittedBy.Contains(id) ||
+                                                s.Description.Contains(id));
+
+            }
+
+            return View(ingredients);
+        }
+
+
         // GET: Ingredients/Details/5
         public ActionResult Details(string id)
         {
@@ -40,19 +78,26 @@ namespace CIS598PROJECT.Models
         }
 
         // GET: Ingredients/Create
+
         public ActionResult Create()
         {
-            ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
             return View();
         }
 
         // POST: Ingredients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("Create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,Description,Image,SubmittedBy,CostLiter,Date,Type")] Ingrediant ingrediant)
         {
+            ViewBag.SubmittedBy = new SelectList(db.Users, "User1", "Email");
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            BTBDatabase_1Entities2 service = new BTBDatabase_1Entities2();
+            db = new BTBDatabase_1Entities2();
+            ingrediant.Image = new Controllers.ConversionController().ConvertToBytes(file);
+            
             if (ModelState.IsValid)
             {
                 db.Ingrediants.Add(ingrediant);
@@ -122,6 +167,22 @@ namespace CIS598PROJECT.Models
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Retrieve an image from a databases
+        [HttpGet]
+        public ActionResult RetrieveImage(string id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         protected override void Dispose(bool disposing)
         {

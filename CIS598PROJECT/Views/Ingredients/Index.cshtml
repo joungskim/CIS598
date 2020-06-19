@@ -1,16 +1,35 @@
 ﻿@model IEnumerable<CIS598PROJECT.Models.Ingrediant>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ingredients List";
 }
+<div class="padding-top-table">
+    <div class="create-new-tab">@Html.ActionLink("Alcohol List", "Index", "Ingredients")</div>
 
-<h2>Index</h2>
+    <div class="create-new-tab">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+    <div class="search-tab">
+        <div class="float-left">
+            Search Drinks/Shots:
+        </div>
+        @using (Html.BeginForm("Index", "Ingredients", FormMethod.Post))
+        {
+            <div class="float-left">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+                @Html.TextBox("id", "", new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            <div class="float-left">
+                <input type="submit" value="Search" class="btn-warning search-btn" />
+            </div>
+        }
+    </div>
+
+</div>
+<table class="zui-table zui-table-rounded">
     <tr>
+        <thead>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -33,38 +52,42 @@
             @Html.DisplayName("Submitted By")
         </th>
         <th></th>
+    </thead>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
 
-        <td>
-            @Html.ActionLink("See Photo", "GotoPage")
-        </td>
-        <td>
-           $@Html.DisplayFor(modelItem => item.CostLiter)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.User1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Name }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Name }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Name })
-        </td>
-    </tr>
-}
+            <td>
+                @*<img src="@Url.Action("RetrieveImage", "Ingrediants", new { name = item.Name })" alt="No Image Uploaded" height=100 width=200 />*@
+                <img class="thumbnail-index" src="/Ingredients/RetrieveImage/@item.Name" i alt="No Image Uploaded" />
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.CostLiter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.User1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Name }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Name }) |
+            </td>
+        </tr>
+        
+    }
 
 </table>
